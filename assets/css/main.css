@@ -332,8 +332,9 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 40px;
   margin-right: 8px;
+  color: var(--heading-color);
 }
 
 .header .logo h1 {
@@ -653,51 +654,59 @@ h6 {
 --------------------------------------------------------------*/
 .footer {
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: black;
   border-top: 1px solid color-mix(in srgb, var(--accent-color), transparent 75%);
   font-size: 14px;
   position: relative;
-}
-
-.footer .footer-top {
-  padding-top: 50px;
-}
-
-.footer .footer-about .logo {
-  line-height: 1;
-  margin-bottom: 25px;
-}
-
-.footer .footer-about .logo img {
-  max-height: 40px;
-  margin-right: 6px;
-}
-
-.footer .footer-about .logo span {
-  color: var(--heading-color);
-  font-family: var(--heading-font);
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.footer .footer-about p {
-  font-size: 14px;
-  font-family: var(--heading-font);
-}
-
-.footer .social-links a {
-  display: flex;
-  align-items: center;
+  margin: 0 auto;
+  width: 100%;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  
+}
+
+
+.footer-title {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.footer-divider {
+  border-top: 1px solid white;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.nav-link {
+  color: white;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-right: 10px;
-  transition: 0.3s;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  transition: background-color 0.3s;
+}
+
+.tt{
+  margin: 0 50px;
+  font-size: 30px;
+}
+
+.footer-copyright {
+  font-size: 1.0rem;
+  margin-top: 30px;
 }
 
 .footer .social-links a:hover {
@@ -713,7 +722,7 @@ h6 {
 }
 
 .footer .footer-links {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .footer .footer-links ul {
@@ -729,7 +738,6 @@ h6 {
 }
 
 .footer .footer-links ul li {
-  padding: 10px 0;
   display: flex;
   align-items: center;
 }
@@ -1068,10 +1076,6 @@ section,
   color: white;
 }
 
-.contents{
-  font-size: 10rem;
-  font-weight: 700;
-}
 
 .about .content h4{
   color: var(--accent-color);
@@ -1080,7 +1084,7 @@ section,
 .about .content button[type=submit] {
   background: var(--accent-color);
   border: 0;
-  padding: 10px 35px;
+  padding: 15px 45px;
   color: #fff;
   transition: 0.4s;
   border-radius: 10px;
@@ -1289,6 +1293,8 @@ section,
 --------------------------------------------------------------*/
 .departments {
   overflow: hidden;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .departments .nav-tabs {
@@ -1321,28 +1327,38 @@ section,
 }
 
 .departments .details h3 {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
 .departments .details p {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
-  font-size: 25px;
+  font-size: 18px;
+  font-weight: bold
 }
 
 .departments .details p:last-child {
   margin-bottom: 0;
 }
 
+@media (min-width: 1024px) {
+
+.contents{
+  font-size: 10rem;
+  font-weight: 700;
+}
+}
 @media (max-width: 992px) {
   .departments .nav-link {
     border: 0;
     padding: 15px;
   }
 
+  
+
   .departments .nav-link.active {
-    color: var(--accent-color);
+    color: var(--contrast-color);
     background: var(--accent-color);
   }
 }
@@ -1366,6 +1382,11 @@ section,
     justify-content: center !important;
     align-items: center !important;
   }
+  .contents{
+    font-size: 6rem;
+    font-weight: 700;
+  }
+
 }
 
 .doctors .team-member .pic {
@@ -1388,6 +1409,7 @@ section,
 }
 
 @media (max-width: 468px) {
+  
   .doctors .team-member .member-info {
     padding: 30px 0 0 0;
     text-align: center;
@@ -1692,7 +1714,7 @@ section,
 
 .gallery-item {
   flex: 0 0 auto;
-  width: 250px; /* Consistent width */
+  width: 130px; /* Consistent width */
   margin: 0;
   padding: 0;
 }
@@ -1781,7 +1803,7 @@ section,
   color: var(--contrast-color);
   background: var(--accent-color);
   border: 0;
-  padding: 10px 36px;
+  padding: 10px 46px;
   transition: 0.4s;
   border-radius: 50px;
 }
