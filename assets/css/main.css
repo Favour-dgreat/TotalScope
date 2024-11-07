@@ -153,6 +153,36 @@ h6 {
   border-left: 15px solid var(--accent-color);
   transform: scale(20);
 }
+.why-box {
+  width: 100%;
+  height: 700px; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-image {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+
+
+.carousel-image img {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+
 
 @keyframes pulsate-play-btn {
   0% {
@@ -166,7 +196,6 @@ h6 {
   }
 }
 
-/* Container for the text */
 .typing-animation {
   font-family: 'Arial', sans-serif;
   font-size: inherit;
@@ -175,7 +204,7 @@ h6 {
   overflow: hidden; /* Hides the overflow */
   white-space: nowrap; /* Prevents text from wrapping */
   border-right: 0.15em solid white; /* Adds the cursor effect */
-  animation: typing 4s steps(10, end) 1s forwards, blink 0.75s step-end infinite, deleting 4s 6s steps(10, end) infinite;
+  animation: typing 4s steps(10, end) 1s forwards, blink 1s steps(2, end) infinite;
 }
 
 /* Typing animation */
@@ -184,7 +213,7 @@ h6 {
     width: 0;
   }
   to {
-    width: 100%;
+    width: 9ch; /* Adjust to the length of 'TOTALSCOPE' */
   }
 }
 
@@ -201,12 +230,13 @@ h6 {
 /* Deleting animation */
 @keyframes deleting {
   from {
-    width: 100%;
+    width: 9ch; /* Matches the length of 'TOTALSCOPE' */
   }
   to {
     width: 0;
   }
 }
+
 
 
 /* PHP Email Form Messages
@@ -1714,7 +1744,7 @@ section,
 
 .gallery-item {
   flex: 0 0 auto;
-  width: 130px; /* Consistent width */
+  width: 180px; /* Consistent width */
   margin: 0;
   padding: 0;
 }
