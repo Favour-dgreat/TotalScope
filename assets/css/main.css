@@ -21,20 +21,20 @@
 :root { 
   --background-color: black; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #1977cc; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #1977cc; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --heading-color: #0504aa; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #0504aa; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #2c4964;  /* The default color of the main navmenu links */
-  --nav-hover-color: #1977cc; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-color: #0504aa;  /* The default color of the main navmenu links */
+  --nav-hover-color: #0504aa; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #2c4964; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #1977cc; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #0504aa; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -99,6 +99,40 @@ h6 {
   overflow: hidden;
 }
 
+.hero .content .icon-box {
+  background: #1d1f2a;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+
+}
+
+.hero .content .icon-box:hover {
+  box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+
+
+.hero .content .why-box {
+  background: #1d1f2a;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.hero .content .why-box:hover {
+  box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+
 .pulsating-play-btn:before {
   content: "";
   position: absolute;
@@ -155,7 +189,7 @@ h6 {
 }
 .why-box {
   width: 100%;
-  height: 700px; /* Adjust height as needed */
+  height: 400px; /* Adjust height as needed */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,6 +204,7 @@ h6 {
 
 .carousel-image {
   display: flex;
+ margin-top: 30px;
   transition: transform 1s ease-in-out;
 }
 
@@ -362,9 +397,8 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 40px;
+  max-height: 100px;
   margin-right: 8px;
-  color: var(--heading-color);
 }
 
 .header .logo h1 {
@@ -372,6 +406,17 @@ h6 {
   margin: 0;
   font-weight: 700;
   color: var(--heading-color);
+}
+.sitename {
+  white-space: nowrap; /* Prevents wrapping */
+}
+
+.total {
+  color: #0504aa;
+}
+
+.scope {
+  color: #7a288a;
 }
 
 .header .cta-btn,
@@ -383,13 +428,43 @@ h6 {
   margin: 0 0 0 30px;
   border-radius: 50px;
   transition: 0.3s;
+  box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.9);
+
 }
 
 .header .cta-btn:hover,
 .header .cta-btn:focus:hover {
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  text-decoration: underline;
 }
+
+.animated-button {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: shadowPulse 2s infinite ease-in-out;
+}
+
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.5), 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.7), 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.5), 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+
 
 @media (max-width: 1200px) {
   .header .logo {
@@ -453,7 +528,7 @@ h6 {
     font-size: 15px;
     padding: 0 2px;
     font-family: var(--nav-font);
-    font-weight: 400;
+    font-weight: bolder;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -464,7 +539,7 @@ h6 {
 
   .navmenu a i,
   .navmenu a:focus i {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 0;
     margin-left: 5px;
     transition: 0.3s;
@@ -591,7 +666,7 @@ h6 {
     padding: 10px 20px;
     font-family: var(--nav-font);
     font-size: 17px;
-    font-weight: 500;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1072,10 +1147,11 @@ section,
   color: var(--accent-color);
 }
 
+
 .hero .content .icon-box {
   text-align: center;
   border-radius: 10px;
-  background: color-mix(in srgb, var(--surface-color), transparent 20%);
+  background: color-mix(in srgb, var(--surface-color), transparent 40%);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   padding: 40px 30px;
   width: 100%;
@@ -1087,7 +1163,7 @@ section,
 }
 
 .hero .content .icon-box h4 {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   margin: 10px 0 20px 0;
 }
@@ -1100,6 +1176,9 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+
+
+
 .about .content h3 {
   font-size: 2rem;
   font-weight: 700;
@@ -1136,51 +1215,88 @@ section,
   top: calc(50% - 47px);
 }
 
-/*--------------------------------------------------------------
-# Stats Section
---------------------------------------------------------------*/
-.stats i {
-  color: var(--contrast-color);
-  background-color: var(--accent-color);
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
-  width: 54px;
-  height: 54px;
-  font-size: 24px;
-  border-radius: 50px;
-  border: 2px solid var(--background-color);
-  display: inline-flex;
+/* Outer container */
+.chat-gallery {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  white-space: nowrap;
+  display: flex;
+  justify-content: center; /* Centers the layers */
+}
+
+/* Scrollable container for layers */
+.scroll-container {
+  padding-left: 50%;
+
+  display: flex;
+  gap: 20px; /* Adds spacing between layers */
+}
+/* Scrollable container for layers */
+.scroll-containers {
+  padding-left: 40%;
+  padding-right: 1%;
+
+
+  display: flex;
+  gap: 20px; /* Adds spacing between layers */
+}
+
+#ii{
+  margin-bottom: 20px;
+}
+
+/* Chat layers */
+.chat-layer {
+  display: flex;
+  flex-direction: column; /* Aligns cards in two layers */
+}
+
+/* Individual chat bubble */
+.chat-bubble {
+  border-radius: 25px; /* Rounded corners */
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #ffffff;
+  padding: 10px;
+  width: 400px; /* Set a fixed width for chat bubbles */
+  height: auto;
+  display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 1;
 }
 
-.stats .stats-item {
-  background-color: var(--surface-color);
-  margin-top: -27px;
-  padding: 30px 30px 25px 30px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-  box-shadow: 0px 2px 35px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  z-index: 0;
+.scroll-containers:hover{
+  animation: scroll 40s linear infinite;
+  white-space: nowrap;
+}
+.scroll-container:hover{
+  animation: scroll 40s linear infinite;
+  white-space: nowrap;
 }
 
-.stats .stats-item span {
-  font-size: 32px;
-  display: block;
-  margin: 10px 0;
-  font-weight: 700;
-  color: var(--heading-color);
+
+/* Style the images inside the chat bubbles */
+.chat-bubble img {
+  border-radius: 15px; /* Makes the images inside bubbles rounded */
+  max-width: 100%; /* Ensures images fit within the chat bubble */
+  height: auto;
 }
 
-.stats .stats-item p {
-  padding: 0;
-  margin: 0;
-  font-family: (--heading-font);
-  font-size: 16px;
+/* Hide scrollbar for modern browsers */
+.chat-gallery {
+  overflow: hidden; /* Hides the scrollbar */
 }
+
+/* For cases where horizontal scrolling is needed but scrollbar hidden */
+.chat-gallery {
+  overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+}
+.chat-gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 
 /*--------------------------------------------------------------
 # Services Section
@@ -1321,10 +1437,61 @@ section,
 /*--------------------------------------------------------------
 # Departments Section
 --------------------------------------------------------------*/
+
+.card-containers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 cards in a row */
+  gap: 20px;
+  margin: 30px auto;
+  
+}
+
+.cards.visible {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Move to original position */
+}
+
+.cards.hidden {
+  opacity: 0; /* Fade out */
+  transform: translateY(50px); /* Slide down slightly */
+}
+
+
+.cards {
+  background: linear-gradient(145deg, #202032, #161622);
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+  opacity: 0; /* Cards are initially hidden */
+  transform: translateY(50px); /* Offset position */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade-in */
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  max-width: 800px;
+}
+
+.cards:nth-child(7),
+.cards:nth-child(8) {
+  padding: 10px;
+  max-width: 900px;
+  grid-column: span 1; /* Span two columns for the last row */
+  justify-self: center;
+}
+
+@media (max-width: 768px) {
+  .card-containers {
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+  }
+}
 .departments {
-  overflow: hidden;
-  margin: 0 auto;
-  width: 100%;
+  color: white;
+  display: block;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .departments .nav-tabs {
@@ -1377,6 +1544,78 @@ section,
 .contents{
   font-size: 10rem;
   font-weight: 700;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); /* White shadow effect */
+}
+/* Outer container */
+.chat-gallery {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  white-space: nowrap;
+  display: flex;
+  justify-content: center; /* Centers the layers */
+}
+
+/* Scrollable container for layers */
+.scroll-container {
+  padding-left: 50%;
+
+  display: flex;
+  gap: 20px; /* Adds spacing between layers */
+}
+/* Scrollable container for layers */
+.scroll-containers {
+  padding-left: 40%;
+  padding-right: 1%;
+
+
+  display: flex;
+  gap: 20px; /* Adds spacing between layers */
+}
+
+#ii{
+  margin-bottom: 20px;
+}
+
+/* Chat layers */
+.chat-layer {
+  display: flex;
+  flex-direction: column; /* Aligns cards in two layers */
+}
+
+/* Individual chat bubble */
+.chat-bubble {
+  border-radius: 25px; /* Rounded corners */
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #ffffff;
+  padding: 10px;
+  width: 400px; /* Set a fixed width for chat bubbles */
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style the images inside the chat bubbles */
+.chat-bubble img {
+  border-radius: 15px; /* Makes the images inside bubbles rounded */
+  max-width: 100%; /* Ensures images fit within the chat bubble */
+  height: auto;
+}
+
+/* Hide scrollbar for modern browsers */
+.chat-gallery {
+  overflow: hidden; /* Hides the scrollbar */
+}
+
+/* For cases where horizontal scrolling is needed but scrollbar hidden */
+.chat-gallery {
+  overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+}
+.chat-gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 }
 @media (max-width: 992px) {
@@ -1391,6 +1630,69 @@ section,
     color: var(--contrast-color);
     background: var(--accent-color);
   }
+
+  /* Outer container */
+.chat-gallery {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  white-space: nowrap;
+  display: flex;
+  justify-content: center; /* Centers the layers */
+}
+
+/* Scrollable container for layers */
+.scroll-container {
+  display: flex;
+}
+/* Scrollable container for layers */
+.scroll-containers {
+  display: none;
+}
+
+#ii{
+  margin-bottom: 10px;
+}
+
+/* Chat layers */
+.chat-layer {
+  display: flex;
+  flex-direction: column; /* Aligns cards in two layers */
+}
+
+/* Individual chat bubble */
+.chat-bubble {
+  border-radius: 25px; /* Rounded corners */
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #ffffff;
+  width: 600px; /* Set a fixed width for chat bubbles */
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style the images inside the chat bubbles */
+.chat-bubble img {
+  border-radius: 15px; /* Makes the images inside bubbles rounded */
+  max-width: 100%; /* Ensures images fit within the chat bubble */
+  height: auto;
+}
+
+/* Hide scrollbar for modern browsers */
+.chat-gallery {
+  overflow: show; /* Hides the scrollbar */
+}
+
+/* For cases where horizontal scrolling is needed but scrollbar hidden */
+.chat-gallery {
+  overflow-x: scroll;
+  scrollbar-width:thin /* Firefox */
+}
+.chat-gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 }
 
 /*--------------------------------------------------------------
@@ -1758,6 +2060,67 @@ section,
   border-radius: 8px;
 }
 
+
+.review-section {
+  position: relative;
+  display: block;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.reviews-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+}
+
+.review {
+  min-width: 300px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review img {
+  width: 100%;
+  display: block;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+.scroll-btn:hover {
+  background: #444;
+}
+
 /* Scrolling animation */
 @keyframes scroll {
   0% {
@@ -1848,6 +2211,3 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}

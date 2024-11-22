@@ -6,6 +6,57 @@
 * License: https://bootstrapmade.com/license/
 */
 
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".cards");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const targetCard = entry.target;
+        const delay = Array.from(cards).indexOf(targetCard) * 200; // Delay of 200ms per card
+
+        if (entry.isIntersecting) {
+          // When the card enters the viewport
+          setTimeout(() => {
+            targetCard.classList.add("visible");
+            targetCard.classList.remove("hidden");
+          }, delay);
+        } else {
+          // When the card leaves the viewport
+          setTimeout(() => {
+            targetCard.classList.remove("visible");
+            targetCard.classList.add("hidden");
+          }, delay);
+        }
+      });
+    },
+    {
+      threshold: 0.1, // Trigger when 10% of the card is visible
+    }
+  );
+
+  cards.forEach((cards) => observer.observe(cards));
+});
+
+
+
+
+const container = document.querySelector('.reviews-container');
+
+function scrollLeft() {
+  container.scrollBy({
+    left: -300, // Adjust scroll distance based on your card size
+    behavior: 'smooth'
+  });
+}
+
+function scrollRight() {
+  container.scrollBy({
+    left: 300,
+    behavior: 'smooth'
+  });
+}
+
 (function() {
   "use strict";
 
