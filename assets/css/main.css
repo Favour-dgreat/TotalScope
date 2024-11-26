@@ -293,7 +293,7 @@ h6 {
   font-size: inherit;
   font-weight: bold;
   color: white;
-  overflow: hidden; /* Hides the overflow */
+  overflow-wrap: break-word;
   white-space: nowrap; /* Prevents text from wrapping */
   border-right: 0.15em solid white; /* Adds the cursor effect */
   animation: typing 4s steps(10, end) 1s forwards, blink 1s steps(2, end) infinite;
