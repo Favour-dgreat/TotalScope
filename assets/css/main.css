@@ -230,6 +230,63 @@ h6 {
     opacity: 0;
   }
 }
+@media (min-width: 1200px) {
+.cc{
+  margin: 0 auto;
+  width: 90%;
+  padding: 10%;
+}
+.central_div {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+}
+.cc h1{
+  color: #fff;
+  font-size: 40px;
+}
+
+.cc p{
+  color: #fff;
+  max-width: 450px;
+}
+.video{
+  width: 60%;
+  background-color: #060606;
+  border-radius: 30px;
+  box-sizing: border-box;
+  border-style: double;
+  margin-right: 10px;
+}
+
+.ccc{
+  width: 100%;
+  border-radius: 30px;
+  box-sizing: content-box;
+}
+}
+
+@media screen and (max-width: 768px) {
+
+  .central_div {
+    display: flex;
+    flex-direction: column-reverse;
+
+  }
+  .cc h1{
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .cc p{
+    color: #fff;
+    max-width: 450px;
+    text-align: center;
+
+  }
+ 
+  }
 
 .typing-animation {
   font-family: 'Arial', sans-serif;
@@ -248,7 +305,7 @@ h6 {
     width: 0;
   }
   to {
-    width: 9ch; /* Adjust to the length of 'TOTALSCOPE' */
+    width: 34ch; /* Adjust to the length of 'TOTALSCOPE' */
   }
 }
 
@@ -1215,87 +1272,7 @@ section,
   top: calc(50% - 47px);
 }
 
-/* Outer container */
-.chat-gallery {
-  width: 100%;
-  overflow-x: auto; /* Enables horizontal scrolling */
-  white-space: nowrap;
-  display: flex;
-  justify-content: center; /* Centers the layers */
-}
 
-/* Scrollable container for layers */
-.scroll-container {
-  padding-left: 50%;
-
-  display: flex;
-  gap: 20px; /* Adds spacing between layers */
-}
-/* Scrollable container for layers */
-.scroll-containers {
-  padding-left: 40%;
-  padding-right: 1%;
-
-
-  display: flex;
-  gap: 20px; /* Adds spacing between layers */
-}
-
-#ii{
-  margin-bottom: 20px;
-}
-
-/* Chat layers */
-.chat-layer {
-  display: flex;
-  flex-direction: column; /* Aligns cards in two layers */
-}
-
-/* Individual chat bubble */
-.chat-bubble {
-  border-radius: 25px; /* Rounded corners */
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  background-color: #ffffff;
-  padding: 10px;
-  width: 400px; /* Set a fixed width for chat bubbles */
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.scroll-containers:hover{
-  animation: scroll 40s linear infinite;
-  white-space: nowrap;
-}
-.scroll-container:hover{
-  animation: scroll 40s linear infinite;
-  white-space: nowrap;
-}
-
-
-/* Style the images inside the chat bubbles */
-.chat-bubble img {
-  border-radius: 15px; /* Makes the images inside bubbles rounded */
-  max-width: 100%; /* Ensures images fit within the chat bubble */
-  height: auto;
-}
-
-/* Hide scrollbar for modern browsers */
-.chat-gallery {
-  overflow: hidden; /* Hides the scrollbar */
-}
-
-/* For cases where horizontal scrolling is needed but scrollbar hidden */
-.chat-gallery {
-  overflow-x: scroll;
-  scrollbar-width: none; /* Firefox */
-}
-.chat-gallery::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
 
 
 /*--------------------------------------------------------------
@@ -1544,7 +1521,8 @@ section,
 .contents{
   font-size: 10rem;
   font-weight: 700;
-  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); /* White shadow effect */
+  color: white;
+  text-shadow: 2px 2px 5px #0504aa; /* White shadow effect */
 }
 /* Outer container */
 .chat-gallery {
@@ -1580,6 +1558,14 @@ section,
 .chat-layer {
   display: flex;
   flex-direction: column; /* Aligns cards in two layers */
+}
+.scroll-containers:hover{
+  animation: scroll 40s linear infinite;
+  white-space: nowrap;
+}
+.scroll-container:hover{
+  animation: scroll 40s linear infinite;
+  white-space: nowrap;
 }
 
 /* Individual chat bubble */
@@ -1619,17 +1605,51 @@ section,
 }
 }
 @media (max-width: 992px) {
-  .departments .nav-link {
-    border: 0;
-    padding: 15px;
+
+  .scroll-containers:hover{
+    animation: scroll 40s linear infinite;
+    white-space: nowrap;
+    
+  }
+  .scroll-container:hover{
+    animation: scroll 40s linear infinite;
+    white-space: nowrap;
   }
 
-  
+#ii{
+  margin-bottom: 20px;
+}
 
-  .departments .nav-link.active {
-    color: var(--contrast-color);
-    background: var(--accent-color);
-  }
+/* Chat layers */
+.chat-layer {
+  display: flex;
+  flex-direction: column; /* Aligns cards in two layers */
+}
+
+/* Individual chat bubble */
+
+
+/* Style the images inside the chat bubbles */
+.chat-bubble img {
+  border-radius: 15px; /* Makes the images inside bubbles rounded */
+  max-width: 100%; /* Ensures images fit within the chat bubble */
+  padding: 5px;
+  height: auto;
+}
+
+/* Hide scrollbar for modern browsers */
+.chat-gallery {
+  overflow: hidden; /* Hides the scrollbar */
+}
+
+/* For cases where horizontal scrolling is needed but scrollbar hidden */
+.chat-gallery {
+  overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+}
+.chat-gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 
   /* Outer container */
 .chat-gallery {
@@ -1643,10 +1663,16 @@ section,
 /* Scrollable container for layers */
 .scroll-container {
   display: flex;
+  padding-left: 200%;
+  gap: 20px; /* Adds spacing between layers */
+
 }
 /* Scrollable container for layers */
 .scroll-containers {
-  display: none;
+  display: flex;
+  padding-left: 200%;
+  gap: 20px; /* Adds spacing between layers */
+
 }
 
 #ii{
@@ -1661,16 +1687,17 @@ section,
 
 /* Individual chat bubble */
 .chat-bubble {
-  border-radius: 25px; /* Rounded corners */
+  border-radius: 15px; /* Rounded corners */
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-color: #ffffff;
-  width: 600px; /* Set a fixed width for chat bubbles */
+  width: 200px; /* Set a fixed width for chat bubbles */
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 /* Style the images inside the chat bubbles */
