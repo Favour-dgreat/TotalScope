@@ -264,6 +264,25 @@ h6 {
   border-radius: 30px;
   box-sizing: content-box;
 }
+.typing-animation {
+  font-family: 'Arial', sans-serif;
+  font-size: inherit;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+  border-right: 0.15em solid white; /* Adds the cursor effect */
+  animation: typing 4s steps(10, end) 1s forwards, blink 1s steps(2, end) infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 34ch; /* Adjust to the length of 'TOTALSCOPE' */
+  }
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -288,26 +307,7 @@ h6 {
  
   }
 
-.typing-animation {
-  font-family: 'Arial', sans-serif;
-  font-size: inherit;
-  font-weight: bold;
-  color: white;
-  overflow-wrap: break-word;
-  white-space: nowrap; /* Prevents text from wrapping */
-  border-right: 0.15em solid white; /* Adds the cursor effect */
-  animation: typing 4s steps(10, end) 1s forwards, blink 1s steps(2, end) infinite;
-}
 
-/* Typing animation */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 34ch; /* Adjust to the length of 'TOTALSCOPE' */
-  }
-}
 
 /* Cursor blinking animation */
 @keyframes blink {
