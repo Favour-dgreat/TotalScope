@@ -592,7 +592,9 @@ h6 {
     transition: 0.3s;
     position: relative;
   }
-
+.ss{
+  display: none;
+}
   .navmenu a i,
   .navmenu a:focus i {
     font-size: 15px;
