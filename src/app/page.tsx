@@ -27,7 +27,7 @@ export default function Home() {
       <Partners />
       {/* CTASection */}
       <CTASection />
-      {/* Footer */}
+      {/* Footer Section */}
       <Footer />
     </div>
   );
