@@ -1,0 +1,81 @@
+/* components/ServicesOverview.module.css */
+.overview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.3rem;
+    overflow: hidden;
+    padding: 3rem 1rem;
+    white-space: nowrap;
+    width: 95%;
+  }
+  
+  .card {
+    background: linear-gradient(90deg, rgba(17, 6, 20, 1) 0%, rgba(116, 0, 139, 1) 100%);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    color: rgba(207, 136, 221, 1);
+    font-size: 0.875rem;
+    display: inline-flex; /* Use flexbox for consistent alignment */
+    flex-direction: column; 
+    justify-content: center; /* Center content vertically */
+    width: 250px; /* Set a fixed width for all cards */
+    height: 120px; /* Set a fixed height for all cards */
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(119, 38, 137, 0.72);
+    overflow: hidden; /* Prevent content overflow */
+    /* animation: slideLeft 20s linear infinite; */
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.2;
+    /* Limit to approximately 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .overview {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+      gap: 1rem;
+      padding-left: 50rem;
+      scrollbar-width: none; /* Firefox */
+    }
+  
+    .overview::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+  
+    .card {
+      flex: 0 0 auto;
+    }
+  
+    .overview::after {
+      content: '';
+      flex: 0 0 1rem; /* Gives some right-end breathing space */
+    }
+  }
+  

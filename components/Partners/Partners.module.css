@@ -1,0 +1,141 @@
+/* components/partners.module.css */
+.partners {
+    padding: 4rem 2rem;
+    color: white;
+    text-align: center;
+    width: 90%;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+      gap: 6rem;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .text {
+      padding: 2rem;
+      flex: 1;
+      max-width: 450px;
+      border-radius: 1cap;
+    }
+    
+    .partners h2 {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: rgba(207, 136, 221, 1);
+      font-family: "Conthrax", sans-serif;
+    }
+    .partners h3{
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        font-size: 32px;
+        text-align: left;
+    }
+    .text p {
+      color: rgba(204, 204, 204, 1);
+      line-height: 2.0;
+      padding-top: 15px;
+      text-align: left;
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: 100 ;
+    }
+    
+    .imageWrapper {
+        position: relative;
+        width: 100%;
+        max-width: 500px; /* or whatever size */
+      }
+      
+      .video {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        background-color: rgba(113, 113, 113, 0.78);
+      }
+      
+      .playButton {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(242, 242, 242, 1);
+        padding: 1.2rem;
+        border-radius: 20%;
+        cursor: pointer;
+        color: rgba(254, 0, 55, 1);
+        font-size: 2rem;
+        transition: background-color 0.3s ease;
+        z-index: 10;
+      }
+      
+      .playButton:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      
+      @media (max-width: 768px) {
+        .partners {
+          color: white;
+          width: 100%;
+          padding: 5%;
+
+          }
+        .partners h2 {
+          text-align: left;
+          font-size: 2rem;
+          color: rgba(207, 136, 221, 1);
+          font-family: "Conthrax", sans-serif;
+        }
+        .content {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row-reverse;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          border: 1px solid rgba(51, 51, 51, 1);
+          border-radius: 5px;
+        }
+        .text {
+          padding: 1rem;
+          flex: 1;
+          border-radius: 1cap;
+        }
+        .partners h2 {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          color: rgba(207, 136, 221, 1);
+          font-family: "Conthrax", sans-serif;
+        }
+        .partners h3{
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 22px;
+            text-align: left;
+        }
+        .text p {
+          color: rgba(204, 204, 204, 1);
+          line-height: 2.0;
+          /* padding-top: 15px; */
+          text-align: left;
+          font-family: "Poppins", sans-serif;
+          font-size: 16px;
+          font-weight: 100 ;
+        }
+        .imageWrapper {
+          position: relative;
+          width: 100%;
+          max-width: 500px; /* or whatever size */
+          padding: 2%;
+        }
+        .video {
+          width: 100%;
+          height: auto;
+          border-radius: 5px;
+          border: 1px solid rgba(51, 51, 51, 1);
+          background-color: rgba(113, 113, 113, 0.78);
+        }
+      }

@@ -1,0 +1,39 @@
+/* components/Footer.module.css */
+.footer {
+    background-color: #000;
+    color: #888;
+    padding: 2rem;
+    font-size: 0.85rem;
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: flex-start;
+    margin-top: 5%;
+    border: 1px solid rgba(51, 51, 51, 1);
+    /* ensures content starts from left */
+    width: 100%;
+  }
+  .socials{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      padding: 1rem;
+    }
+    .socials{
+      width: 100%;
+      justify-content: center;
+    }
+    
+  }

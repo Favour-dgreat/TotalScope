@@ -1,0 +1,93 @@
+/* components/AboutUs.module.css */
+.about {
+  padding: 4rem 2rem;
+  color: white;
+  text-align: center;
+  width: 90%;
+  }
+  
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    gap: 6rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .text {
+    background-color: rgba(70, 23, 79, 1);
+    padding: 2rem;
+    flex: 1;
+    max-width: 600px;
+    border-radius: 1cap;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: rgba(207, 136, 221, 1);
+    font-family: "Conthrax", sans-serif;
+  }
+  
+  .text p {
+    font-size: 0.95rem;
+    color: rgba(204, 204, 204, 1);
+    line-height: 2.0;
+    padding: 10px;
+    padding-top: 15px;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+  }
+
+  
+  .imageWrapper {
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image {
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  @media (max-width: 768px) {
+    .about{
+      padding: 1rem 1rem;
+      width: 100%;
+      text-align: left;
+    }
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+      gap: 1rem;
+      width: 100%;
+    }
+    
+    .text {
+      background-color: rgba(70, 23, 79, 1);
+      padding: 1rem;
+      flex: 1;
+      width: 100%;
+      border-radius: 1cap;
+    }
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: rgba(207, 136, 221, 1);
+      font-family: "Conthrax", sans-serif;
+      text-align: left;
+    }
+    
+    .text p {
+      font-size: 0.95rem;
+      color: rgba(204, 204, 204, 1);
+      padding-top: 5px;
+      text-align: left;
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+    }
+  }

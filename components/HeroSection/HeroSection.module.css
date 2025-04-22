@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'Conthrax';
+    src: url('/font/Conthrax-SemiBold.woff2') format('woff2'),
+         url('/font/Conthrax-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem 5rem;
+    background-color: #000;
+    width: 90%;
+    color: white;
+    flex-wrap: wrap;
+    border: 1px solid transparent;
+    border-image: linear-gradient(rgba(116, 0, 139, 1), rgba(17, 6, 20, 10));
+    border-image-slice: 1;
+    font-family: 'Conthrax', sans-serif;
+}
+  
+  .left {
+    max-width: 500px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .highlight {
+    background: linear-gradient(to right, rgba(0, 0, 170, 1), rgba(122, 40, 138, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  }
+  
+  .tagline {
+    font-style: italic;
+    color: #ccc;
+    margin: 1rem 0 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+  }
+  
+  .hireBtn {
+    background: linear-gradient(to left, rgba(116, 0, 139, 1), rgba(17, 6, 20, 10));
+    box-shadow: 0px 4px 6px rgba(119, 38, 137, 0.72);
+    padding: 0.75rem 6rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+   
+  }
+
+  @media (max-width:750px) {
+    .hero {
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 1rem;
+      width: 100% ;
+    }
+  
+    .left {
+      max-width: 100%;
+      text-align: center;
+      border: 2px solid rgba(116, 0, 139, 1);
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .hero h1 {
+      font-size: 28px;
+      text-align: left;
+      line-height: 40px;
+    }
+  
+    .tagline {
+      font-size: 18px;
+      text-align: left;
+    }
+    
+  }
+  

@@ -1,0 +1,78 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    background: rgba(15, 15, 15, 0.6); /* Slight transparency */
+    backdrop-filter: blur(10px);       /* Glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000; /* Keep it above other content */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional soft border */
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .logo {
+    width: 20%;
+  }
+  
+  .navbarItems {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  
+  .active {
+    color: #BE61D1;
+  }
+  
+  .hireButton {
+    background: linear-gradient(90deg, rgba(17, 6, 20, 1) 0%, rgba(116, 0, 139, 1) 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 20px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0px 4px 6px rgba(119, 38, 137, 0.72);
+  }
+  
+  .hireButtons {
+    background: linear-gradient(90deg, rgba(17, 6, 20, 1) 10%, rgba(116, 0, 139, 1) 100%);
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0px 4px 6px rgba(119, 38, 137, 0.72);
+  }
+  
+
+@media (max-width:450px) {
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #0f0f0f;
+        color: white;
+        font-family: 'Orbitron', sans-serif;
+        width: 100%;
+    }
+    .hireButton{
+        display: none;
+    }
+    .logo{
+        width: 50%;
+    }
+}

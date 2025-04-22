@@ -1,0 +1,190 @@
+/* OrbitalInterface.module.css */
+.orbitalContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .orbitRing {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  .firstOrbit {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed rgba(200, 100, 200, 0.5);
+    animation: rotateRing 60s linear infinite;
+  }
+  
+  .secondOrbit {
+    width: 250px;
+    height: 250px;
+    border: 2px dashed rgba(200, 100, 200, 0.5);
+    animation: rotateRing 80s linear infinite reverse;
+  }
+  
+  .thirdOrbit {
+    width: 350px;
+    height: 350px;
+    border: 2px dashed rgba(200, 100, 200, 0.4);
+    /* Subtle gradient on the third orbit - outer edge blue tint */
+    background: linear-gradient(135deg, 
+      transparent 0%, 
+      rgba(100, 80, 255, 0.03) 50%, 
+      rgba(0, 200, 255, 0.05) 100%
+    );
+    animation: rotateRing 100s linear infinite;
+  }
+  
+  .centerSphere {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(128, 0, 255, 0.6);
+    z-index: 10;
+    /* Subtle purple glow effect */
+    background: radial-gradient(circle, rgba(160, 32, 240, 0.8) 0%, rgba(80, 0, 140, 1) 100%);
+    animation: pulseSphere 6s ease-in-out infinite alternate;
+  }
+  
+  .orbitalIcon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background-color: rgba(200, 100, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    /* Adding subtle shadow for depth */
+    box-shadow: 0 2px 8px rgba(160, 32, 240, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Different animation classes for each orbit */
+  .orbit1 {
+    animation: orbit1 150s linear infinite;
+  }
+  
+  .orbit2 {
+    animation: orbit2 200s linear infinite reverse;
+  }
+  
+  .orbit3 {
+    animation: orbit3 250s linear infinite;
+  }
+  
+  .orbitalIcon:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    background-color: rgba(220, 120, 255, 0.5);
+    box-shadow: 0 0 15px rgba(200, 100, 255, 0.6);
+    animation-play-state: paused; 
+  }
+  
+  
+  @keyframes orbit1 {
+    from { transform: rotate(0deg) translateX(75px) rotate(0deg) translate(-50%, -50%); }
+    to { transform: rotate(360deg) translateX(75px) rotate(-360deg) translate(-50%, -50%); }
+  }
+  
+  @keyframes orbit2 {
+    from { transform: rotate(0deg) translateX(125px) rotate(0deg) translate(-50%, -50%); }
+    to { transform: rotate(360deg) translateX(125px) rotate(-360deg) translate(-50%, -50%); }
+  }
+  
+  @keyframes orbit3 {
+    from { transform: rotate(0deg) translateX(175px) rotate(0deg) translate(-50%, -50%); }
+    to { transform: rotate(360deg) translateX(175px) rotate(-360deg) translate(-50%, -50%); }
+  }
+  
+  @keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes pulseSphere {
+    0% { box-shadow: 0 0 20px rgba(128, 0, 255, 0.5); }
+    50% { box-shadow: 0 0 30px rgba(128, 0, 255, 0.8); }
+    100% { box-shadow: 0 0 40px rgba(128, 0, 255, 0.6); }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .firstOrbit {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .secondOrbit {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .thirdOrbit {
+      width: 280px;
+      height: 280px;
+    }
+    
+    .centerSphere {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .orbitalIcon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    @keyframes orbit1 {
+      from { transform: rotate(0deg) translateX(60px) rotate(0deg) translate(-50%, -50%); }
+      to { transform: rotate(360deg) translateX(60px) rotate(-360deg) translate(-50%, -50%); }
+    }
+    
+    @keyframes orbit2 {
+      from { transform: rotate(0deg) translateX(100px) rotate(0deg) translate(-50%, -50%); }
+      to { transform: rotate(360deg) translateX(100px) rotate(-360deg) translate(-50%, -50%); }
+    }
+    
+    @keyframes orbit3 {
+      from { transform: rotate(0deg) translateX(140px) rotate(0deg) translate(-50%, -50%); }
+      to { transform: rotate(360deg) translateX(140px) rotate(-360deg) translate(-50%, -50%); }
+    }
+  }
+  @media (max-width:450px) {
+    .orbitalContainer {
+      display: none;
+    }
+    .firstOrbit {
+      width: 100px;
+      height: 100px;
+    }
+    .secondOrbit {
+      width: 150px;
+      height: 150px;
+    }
+    .thirdOrbit {
+      width: 200px;
+      height: 200px;
+    }
+    .centerSphere {
+      width: 50px;
+      height: 50px;
+    }
+    .orbitalIcon {
+      width: 30px;
+      height: 30px;
+    }
+  }
