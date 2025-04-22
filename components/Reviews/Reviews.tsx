@@ -63,7 +63,7 @@ const renderStars = (rating: number) => {
   return Array.from({ length: 5 }, (_, i) => (
     <img
       key={i}
-      src={i < rating ? "/images/StarFilled.png" : "/images/Star.png"}
+      src={i < rating ? "/images/Starfilled.png" : "/images/Star.png"}
       alt={i < rating ? "Filled star" : "Empty star"}
       className={styles.star}
     />
