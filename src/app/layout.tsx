@@ -28,12 +28,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Total Scope Agency | Building Your Web3 Empire",
     description:
-      "...building your web3 empire with precision. We specialize in blockchain solutions, smart contracts, and decentralized applications.",
-    url: "https://totalscopeagency.com",
+      "...building your web3 empire with precision. We specialize in blockchain solutions, community management, web3 marketing, raiding & chat moderation, website development, graphics design and UI/UX.",
+    url: "https://totalscope.agency",
     type: "website",
     images: [
       {
-        url: "https://totalscopeagency.com/public/images/logo.png",
+        url: "https://totalscope.agency/public/images/logo.png",
         width: 1200,
         height: 630,
         alt: "Total Scope Agency Logo",
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     site: "@TotalScopeAgency",
     title: "Total Scope Agency | Building Your Web3 Empire",
     description:
-      "...building your web3 empire with precision. We specialize in blockchain solutions, smart contracts, and decentralized applications.",
+      "...your One-Stop Solution for Web3 Excellence. We specialize in blockchain solutions, community management/moderation, web3 marketing, website development, raiding, Graphics design and UI/UX",
     images: [
       {
-        url: "https://totalscopeagency.com/public/images/logo.png",
+        url: "https://totalscope.agency/public/images/logo.png",
         width: 1200,
         height: 630,
         alt: "Total Scope Agency Logo",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   robots:
     "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   alternates: {
-    canonical: "https://totalscopeagency.com",
+    canonical: "https://totalscope.agency",
   },
 };
 
