@@ -7,7 +7,7 @@ const Footer = () => {
       <p>Copyright © TotalScope Agency {new Date().getFullYear()}  All Rights Reserved.</p>
 
       <div className={styles.socials}>
-      <a href="https://t.me/@LexionETH" target="_blank" rel="noopener noreferrer">
+      <a href="https://t.me/LexionETH" target="_blank" rel="noopener noreferrer">
           <img src="/images/telegram_symbol.png" alt="Twitter" width={24} height={24} />
         </a> 
         <a href="https://x.com/TotalScope_" target="_blank" rel="noopener noreferrer">

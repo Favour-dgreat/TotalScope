@@ -6,7 +6,7 @@ const CTASection = () => {
   return (
     <section className={styles.cta} id="hire">
       <h2>Ready to Work With Us?</h2>
-      <Link href="https://t.me/@LexionETH" className={styles.btn}>Hire Us</Link>
+      <Link href="https://t.me/LexionETH" className={styles.btn}>Hire Us</Link>
     </section>
   );
 };
