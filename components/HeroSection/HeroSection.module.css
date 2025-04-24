@@ -48,7 +48,7 @@
   .hireBtn {
     background: linear-gradient(to left, rgba(116, 0, 139, 1), rgba(17, 6, 20, 10));
     box-shadow: 0px 4px 6px rgba(119, 38, 137, 0.72);
-    padding: 0.75rem 6rem;
+    padding: 0.72rem 8rem;
     border-radius: 6px;
     font-weight: bold;
     text-decoration: none;
@@ -68,7 +68,7 @@
     .left {
       max-width: 100%;
       text-align: center;
-      border: 2px solid rgba(116, 0, 139, 1);
+      /* border: 2px solid rgba(116, 0, 139, 1); */
       padding: 10px;
       border-radius: 5px;
     }

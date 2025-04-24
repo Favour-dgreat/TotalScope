@@ -11,7 +11,6 @@
     color: rgba(207, 136, 221, 1);
     font-family: "Conthrax", sans-serif;
   }
-  /* In your global CSS (e.g. index.css or a custom .css file) */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -115,3 +114,15 @@
    
     
   }
+
+.card {
+  animation: none; /* Remove auto-scroll animation */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile */
+}
+
+.cards {
+  animation: none; /* Remove auto-scroll animation */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile */
+}

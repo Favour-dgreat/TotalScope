@@ -28,7 +28,7 @@ const HeroSection = () => {
     </p>
 
     <Link
-      href="#hire"
+      href="https://t.me/@LexionETH"
       className={`${style.hireBtn} inline-block text-white px-6 py-3 rounded-md font-semibold text-sm md:text-base shadow-lg hover:scale-105 transition-transform duration-300`}
     >
       Hire Us

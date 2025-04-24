@@ -61,7 +61,8 @@
       -webkit-overflow-scrolling: touch;
       white-space: nowrap;
       gap: 1rem;
-      padding-left: 50rem;
+      padding-left: 1rem; /* Adjust padding to prevent cutting off */
+      justify-content: flex-start; /* Align items to the start */
       scrollbar-width: none; /* Firefox */
     }
   
@@ -72,10 +73,14 @@
     .card {
       flex: 0 0 auto;
     }
+
+    .card:first-child {
+      flex: 0 0 100%; /* Ensure the first card takes full width */
+      margin-right: 1rem; /* Add spacing after the first card */
+    }
   
     .overview::after {
       content: '';
       flex: 0 0 1rem; /* Gives some right-end breathing space */
     }
   }
-  
