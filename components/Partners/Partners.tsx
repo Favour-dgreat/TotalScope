@@ -44,9 +44,7 @@ const Partners = () => {
             playsInline
             className={styles.video}
           />
-          <div className={styles.playButton} onClick={togglePlay}>
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </div>
+            {/* Removed the play and pause button as requested */}
         </div>
       </div>
     </section>

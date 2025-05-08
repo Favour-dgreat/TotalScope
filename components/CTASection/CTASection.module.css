@@ -30,8 +30,7 @@
   .btn {
     background: linear-gradient(20deg, rgba(17, 6, 20, 1) 45%, rgba(116, 0, 139, 1));
     box-shadow: 0px 4px 6px rgba(119, 38, 137, 0.72);
-    padding: 0.75rem 6rem;
-    border-radius: 4px;
+    padding: 0.75rem 8rem;
     font-weight: bold;
     text-decoration: none;
     color: white;

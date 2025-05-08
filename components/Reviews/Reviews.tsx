@@ -26,7 +26,7 @@ const testimonials = [
     name: "Hannah",
     rating: 4,
     quote:
-      "The best CM I have ever had! Always there to help and keep things running smoothly. A real community Hero!",
+      "From start to finish, the experience with TotalScope Agency was top-notch. Their team is creative, strategic, and results-oriented.",
     avatar: "/images/232.png",
   },
 ];
@@ -34,7 +34,7 @@ const testimonialss = [
   {
     name: "Sharon",
     rating: 3,
-    quote: "Love this agency. Very good team.",
+    quote: "TotalScope Agency exceeded my expectations! Their attention to detail and commitment to delivering results is unmatched.",
     avatar: "/images/1723.png",
   },
   {
@@ -54,7 +54,7 @@ const testimonialss = [
   {
     name: "Micheal",
     rating: 3,
-    quote: "Love this agency. Very good team.",
+    quote: "What I love about TotalScope Agency is their passion and dedication. They treated our project like it was their own and delivered results that blew us away.",
     avatar: "/images/5.png",
   },
 ];
@@ -74,11 +74,11 @@ const Reviews = () => {
   return (
     <section className={styles.detail} id="reviews">
       <h2>Reviews</h2>
-      <div className={`${styles.card} relative flex overflow-hidden gap-4 w-full px-4 pr-4 snap-x snap-mandatory scroll-smooth`}>
-        {testimonials.map((item, index) => (
+      <div className={`${styles.slider} relative flex gap-2 w-full snap-x snap-mandatory scroll-smooth`}>
+      {[...testimonials, ...testimonials].map((item, index) => (
           <div
             key={index}
-            className="snap-start flex-shrink-0 w-full sm:w-80 rounded-[10px] text-left overflow-hidden"
+            className="snap-start flex-shrink-0 w-full sm:w-80 rounded-[10px] text-left "
             style={{
               padding: "1rem",
               background:
@@ -114,11 +114,11 @@ const Reviews = () => {
         <div className="pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-black to-transparent" />
       </div>
 
-      <div className={`${styles.cards} relative flex overflow-hidden gap-4 w-full pt-2 px-4 pr-4 snap-x snap-mandatory scroll-smooth`}>
-        {testimonialss.map((item, index) => (
+      <div className={`${styles.sliders} relative flex gap-2 w-full pt-6 snap-x snap-mandatory scroll-smooth`}>
+      {[...testimonialss, ...testimonialss].map((item, index) => (
           <div
             key={index}
-            className="snap-start flex-shrink-0 w-full sm:w-80 rounded-[10px] text-left overflow-hidden"
+            className="snap-start flex-shrink-0 w-full sm:w-80 rounded-[10px] text-left"
             style={{
               padding: "1rem",
               background:

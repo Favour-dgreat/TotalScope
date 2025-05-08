@@ -6,7 +6,7 @@ const services = [
   "Community Moderation",
   "Chat Engagements",
   "Pro-Raiding Services",
-  "KOLs Management / Business Development",
+  "KOLs Management / BD",
   "Blockchain Development",
 ];
 const icons = [
@@ -20,26 +20,29 @@ const icons = [
 
 const ServicesOverview = () => {
   return (
-    <section className={styles.overview}>
-      {/* Duplicate the services array for seamless scrolling */}
-      {[...services, ...services].map((service, index) => (
-        <div
-          className={`${styles.card} ${styles.slider}`}
-          key={index}
-        >
-          <span className={styles.icon}>
-            <img
-              src={icons[index % icons.length]} // Use modulo to loop through icons
-              alt={`Icon for ${service}`}
-              width={40}
-              height={40}
-            />
-          </span>
-          <p>{service}</p>
-        </div>
-      ))}
-    </section>
+<section className={styles.overview}>
+  {/* Dynamically duplicate the services array for seamless scrolling */}
+  {Array(2)
+    .fill(services)
+    .flat()
+    .map((service, index) => (
+      <div
+        className={`${styles.card} ${styles.slider}`}
+        key={index}
+      >
+        <span className={styles.icon}>
+          <img
+            src={icons[index % icons.length]} 
+            alt={`Icon for ${service}`}
+            width={40}
+            height={40}
+          />
+        </span>
+        <p>{service}</p>
+      </div>
+    ))}
+</section>
   );
-};
+}
 
 export default ServicesOverview;
