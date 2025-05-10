@@ -126,4 +126,16 @@
     color: rgba(207, 136, 221, 1);
     font-family: "Conthrax", sans-serif;
   }
+  .slider {
+  display: flex;
+  gap: 2rem; /* Adjust gap between cards */
+  animation: none;
+}
+
+.sliders {
+  display: flex;
+  gap: 2rem; /* Adjust gap between cards */
+  animation: none;
+ 
+}
 }
