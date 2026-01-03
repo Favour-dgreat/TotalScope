@@ -1,6 +1,6 @@
 // components/Footer/Footer.tsx
 import React from 'react';
-import { BsTelegram, BsInstagram, BsTwitterX, BsArrowRightShort } from "react-icons/bs";
+import { BsTelegram, BsInstagram, BsTwitterX, BsArrowRightShort, BsLinkedin } from "react-icons/bs";
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -19,8 +19,8 @@ const Footer = () => {
             <a href="https://t.me/LexionETH" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <BsTelegram />
             </a>
-            <a href="https://instagram.com/totalscopeagency" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
-              <BsInstagram />
+            <a href="https://www.linkedin.com/company/totalscope-agency" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+              <BsLinkedin />
             </a>
             <a href="https://x.com/TotalScope_" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <BsTwitterX />

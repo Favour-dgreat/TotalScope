@@ -1,0 +1,136 @@
+.servicesPage {
+    background: #030004;
+    color: #fff;
+    min-height: 100vh;
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.highlight {
+    background: linear-gradient(90deg, #5131E0, #9000AD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.serviceCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.serviceCard:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(144, 0, 173, 0.3);
+    transform: translateY(-10px);
+}
+
+.iconWrapper {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(81, 49, 224, 0.2), rgba(144, 0, 173, 0.2));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #9000AD;
+    border: 1px solid rgba(144, 0, 173, 0.3);
+}
+
+.cardTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.cardDesc {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.cardFooter {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #9000AD;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(144, 0, 173, 0.15) 0%, transparent 70%);
+    top: -50px;
+    right: -50px;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .servicesPage {
+        padding-top: 8rem;
+    }
+
+    .title {
+        font-size: 2.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .serviceCard {
+        padding: 2rem;
+    }
+}

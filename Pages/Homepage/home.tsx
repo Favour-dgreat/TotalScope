@@ -153,6 +153,13 @@ const HomePage = () => {
         }
     ];
 
+    const scrollToContact = () => {
+        const element = document.getElementById('contact');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <div>
             <Navbar />
@@ -175,13 +182,10 @@ const HomePage = () => {
                         We help startups, enterprises, and emerging Web3 brands design, build, and scale powerful digital products
                     </p>
 
-                    <div className={styles.inputGroup}>
-                        <input type="text" placeholder="Tell Us your Idea" className={styles.input} />
-                        <button className={styles.button}>
-                            Let's Talk <span className={styles.arrow}> <BsArrowUpRightCircle size={20} />
-                            </span>
-                        </button>
-                    </div>
+                    <button className={styles.button} onClick={scrollToContact}>
+                        Let's Work Together <span className={styles.arrow}> <BsArrowUpRightCircle size={20} />
+                        </span>
+                    </button>
                 </div>
 
                 <div className={styles.globeContainer}>
@@ -375,18 +379,18 @@ const HomePage = () => {
             </div>
             <section className={styles.workWithUsSection}>
                 <div className={styles.workHeader}>
-                    <div className={styles.workHeaderLeft}>
-                        <div className={styles.badge}>
+                    <div className={`${styles.workHeaderLeft} items-center md:items-start w-full md:w-auto`}>
+                        <div className={`${styles.badge} mx-auto md:mx-0`}>
                             <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
                             <span>Our Portfolio</span>
                         </div>
-                        <h2 className={styles.workTitle}>
+                        <h2 className={`${styles.workTitle} text-center md:text-left`}>
                             Featured <span className={styles.highlight}>Work</span>
                         </h2>
                     </div>
 
-                    <div className={styles.workHeaderRight}>
-                        <button className={styles.exploreButton}>
+                    <div className={`${styles.workHeaderRight} justify-center md:justify-end w-full md:w-auto`}>
+                        <button className={`${styles.exploreButton} hidden md:flex`}>
                             Explore All Case Studies <BsArrowUpRightCircle size={18} />
                         </button>
                     </div>
@@ -575,7 +579,7 @@ const HomePage = () => {
             </section>
 
             {/* REACHOUT SECTION */}
-            <section className={styles.reachoutSection}>
+            <section className={styles.reachoutSection} id="contact">
                 <div className={styles.contentWrapper}>
                     <h2 className={styles.headline}>
                         We turn ambitious ideas into

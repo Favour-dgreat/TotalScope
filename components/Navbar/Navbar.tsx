@@ -1,6 +1,6 @@
-// components/Navbar/Navbar.tsx
-"use client";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import style from "./Navbar.module.css";
@@ -8,48 +8,57 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Services", path: "/services" },
+    { label: "About Us", path: "/about" },
+    { label: "Blog", path: "/blog" }
+  ];
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (pathname === "/") {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If not on home, we can link back or let the user navigate
+      window.location.href = `/#${id}`;
     }
   };
 
-  const formatStringToId = (str: string): string => {
-    return str.toLowerCase().replace(/\s+/g, "-");
-  };
-
-  const navItems = ["Home", "Services", "About Us", "Blog"];
-
   return (
     <div className={style.navbar}>
-      <Image
-        src="/images/totalscopelogo.png"
-        alt="TotalScope"
-        width={120}
-        height={120}
-        className={style.logo}
-      />
+      <Link href="/">
+        <Image
+          src="/images/totalscopelogo.png"
+          alt="TotalScope"
+          width={120}
+          height={120}
+          className={style.logo}
+        />
+      </Link>
 
       {/* Desktop Navigation */}
       <nav className={style.navbarItems}>
-        {navItems.map((item, index) => (
-          <motion.a
-            key={item}
-            onClick={() => scrollToSection(formatStringToId(item))}
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className={index === 0 ? style.active : ""}
-          >
-            {item}
-          </motion.a>
+        {navItems.map((item) => (
+          <Link key={item.label} href={item.path} passHref legacyBehavior>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className={pathname === item.path ? style.active : ""}
+            >
+              {item.label}
+            </motion.a>
+          </Link>
         ))}
       </nav>
 
       <motion.button
         className={style.hireButton}
-        onClick={() => scrollToSection("contact")}
+        onClick={() => window.open("https://t.me/LexionETH", "_blank")}
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.1 }}
       >
@@ -79,17 +88,14 @@ const Navbar = () => {
             transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
           >
             {navItems.map((item) => (
-              <motion.a
-                key={item}
-                onClick={() => {
-                  scrollToSection(formatStringToId(item));
-                  setIsMobileMenuOpen(false);
-                }}
-                className={style.mobileLink}
-                whileHover={{ scale: 1.1, color: "#4400ff" }}
-              >
-                {item}
-              </motion.a>
+              <Link key={item.label} href={item.path} onClick={() => setIsMobileMenuOpen(false)}>
+                <motion.span
+                  className={`${style.mobileLink} ${pathname === item.path ? style.active : ""}`}
+                  whileHover={{ scale: 1.1, color: "#4400ff" }}
+                >
+                  {item.label}
+                </motion.span>
+              </Link>
             ))}
 
             <motion.button
