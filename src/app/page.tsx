@@ -7,28 +7,13 @@ import Reviews from "../../components/Reviews/Reviews";
 import Partners from "../../components/Partners/Partners";
 import CTASection from "../../components/CTASection/CTASection";
 import Footer from "../../components/Footer/Footer";
-
+import Link from "next/link";
+import Homepage from "../../Pages/Homepage/home";
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden flex flex-col items-center justify-center text-white">
-      {/* NavBar*/}
-      <Navbar />
-      {/* Hero Section */}
-      <HeroSection />
-      {/* Services Overview */}
-      <ServicesOverview />
-      {/* Services Detail */}
-      <ServicesDetail />
-      {/* About Us */}
-      <AboutUs />
-      {/*Reviews*/}
-      <Reviews />
-      {/* Partners */}
-      <Partners />
-      {/* CTASection */}
-      <CTASection />
-      {/* Footer Section */}
-      <Footer />
+    <div className="bg-[#030004] h-[100vh] w-[100vw] overflow-x-hidden overflow-y-auto">
+   <Homepage />
+  
     </div>
   );
 }

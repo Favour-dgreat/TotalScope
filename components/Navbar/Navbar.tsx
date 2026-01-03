@@ -1,8 +1,10 @@
+// components/Navbar/Navbar.tsx
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import style from "./Navbar.module.css";
+import { BsArrowUpRightCircle } from "react-icons/bs";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,94 +20,32 @@ const Navbar = () => {
     return str.toLowerCase().replace(/\s+/g, "-");
   };
 
+  const navItems = ["Home", "Services", "About Us", "Blog"];
+
   return (
     <div className={style.navbar}>
       <Image
-        src="/images/logo.png"
-        alt="$GALAXY"
+        src="/images/totalscopelogo.png"
+        alt="TotalScope"
         width={120}
         height={120}
         className={style.logo}
       />
 
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center ml-auto gap-4">
-        <nav
-          className={style.navbarItems}
-          
-        >
-            {["Home", "Service", "About Us", "Reviews", "Our Partners"].map((item, index) => (
-            <motion.a
-              key={item}
-              onClick={() => scrollToSection(formatStringToId(item))}
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className={index === 0 ? style.active : ""}
-            >
-              {item}
-            </motion.a>
-            ))}
-            
-        </nav>
-      </div>
-
-      {/* Mobile Menu Toggle */}
-      <div className="lg:hidden flex items-center">
-        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          <Image
-            src="/images/List.png"
-            alt="menu"
-            width={120}
-            height={120}
-            className="w-10 "
-          />
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <motion.div
-          className="absolute top-0 right-0 w-[100%] bg-white border-2 border-black h-[380px] flex flex-col p-5 justify-center gap-6 z-50" style={{borderRadius: "10px"}}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-        >
-          <button
-            className="absolute top-4 right-4"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <Image
-              src="/images/close.png"
-              alt="close"
-              width={10}
-              height={10}
-              className="w-2 "
-            />
-          </button>
-
-          {["Home", "Service", "About Us", "Reviews", "Our Partners"].map((item) => (
-            <motion.a
-              key={item}
-              onClick={() => {
-                scrollToSection(formatStringToId(item));
-                setIsMobileMenuOpen(false);
-              }}
-              className="text-[#002a7f] text-sm font-bold uppercase tracking-wider"
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              {item}
-            </motion.a>
-          ))}
-          <motion.button
-           className={style.hireButtons}
-          style={{width: "30%"}}
+      <nav className={style.navbarItems}>
+        {navItems.map((item, index) => (
+          <motion.a
+            key={item}
+            onClick={() => scrollToSection(formatStringToId(item))}
             whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className={index === 0 ? style.active : ""}
           >
-            Hire Us
-          </motion.button>
-        </motion.div>
-      )}
+            {item}
+          </motion.a>
+        ))}
+      </nav>
 
       <motion.button
         className={style.hireButton}
@@ -113,8 +53,59 @@ const Navbar = () => {
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.1 }}
       >
-        Hire Us
+        Contact Us
+        <span className="ml-2"> <BsArrowUpRightCircle size={20} /> </span>
       </motion.button>
+
+      {/* Mobile Menu Toggle (Hamburger) */}
+      <div
+        className={`${style.hamburger} ${isMobileMenuOpen ? style.active : ""} lg:hidden`}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle Menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Mobile Navigation Portal */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className={style.mobileMenu}
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
+          >
+            {navItems.map((item) => (
+              <motion.a
+                key={item}
+                onClick={() => {
+                  scrollToSection(formatStringToId(item));
+                  setIsMobileMenuOpen(false);
+                }}
+                className={style.mobileLink}
+                whileHover={{ scale: 1.1, color: "#4400ff" }}
+              >
+                {item}
+              </motion.a>
+            ))}
+
+            <motion.button
+              className={style.mobileHireButton}
+              onClick={() => {
+                scrollToSection("contact");
+                setIsMobileMenuOpen(false);
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get Started
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
