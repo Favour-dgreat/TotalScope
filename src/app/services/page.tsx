@@ -12,63 +12,33 @@ import styles from './ServicesPage.module.css';
 
 const services = [
     {
-        title: "Blockchain Development",
-        description: "Expert token creation, smart contract engineering, and dApp deployment across major chains like Ethereum, Solana, and BSC.",
+        title: "Blockchain Architecture",
+        description: "Custom tokenomics, smart contract engineering, and enterprise blockchain deployment for resilient dApps.",
         icon: <BsShieldLock />,
     },
     {
-        title: "KOLs & Business Development",
-        description: "Strategic partnerships and influencer management to build credibility and scale project reach globally.",
-        icon: <BsBriefcaseFill />,
-    },
-    {
-        title: "Community Management",
-        description: "Building authentic, hyper-engaged communities through proven growth frameworks and active participation.",
-        icon: <BsPeopleFill />,
-    },
-    {
-        title: "Web & App Development",
-        description: "High-performance websites and digital products built for the next generation of the internet.",
+        title: "Product Engineering",
+        description: "Full-stack development of scalable Web3 platforms and mobile-first decentralized applications.",
         icon: <BsCodeSlash />,
     },
     {
-        title: "Graphic & UI/UX Design",
-        description: "Stunning visual identities and user-centric designs that make your brand stand out in a crowded market.",
-        icon: <BsPhone />,
+        title: "Global BD & Partnerships",
+        description: "Scaling project reach through KOL management and cross-chain strategic collaborations.",
+        icon: <BsBriefcaseFill />,
     },
     {
-        title: "Community Moderation",
-        description: "24/7 proactive moderation to ensure your community remains positive, secure, and spam-free.",
-        icon: <BsLightningCharge />,
+        title: "Community Ecosystems",
+        description: "Building authentic, hyper-engaged communities with a focus on longevity and governance.",
+        icon: <BsPeopleFill />,
     },
     {
-        title: "Chat Engagements",
-        description: "Driving organice conversation and keeping your project’s energy high in Discord and Telegram.",
-        icon: <BsChatDots />,
-    },
-    {
-        title: "Pro-Raiding Services",
-        description: "Coordinated social media campaigns that amplify your project’s presence during critical announcements.",
-        icon: <BsMegaphoneFill />,
-    },
-    {
-        title: "Social Media Optimization",
-        description: "Professional setup and maintenance of your brand's social footprint for maximum visibility.",
-        icon: <BsGraphUp />,
-    },
-    {
-        title: "AI Solutions Integration",
-        description: "Harnessing the power of AI to automate workflows and enhance user experiences.",
-        icon: <BsCpu />,
-    },
-    {
-        title: "Web3 Security Audit",
-        description: "Thorough analysis of smart contracts and infrastructure to ensure maximum security.",
+        title: "24/7 Security & Moderation",
+        description: "Proactive governance and moderation systems to protect and nurture community growth.",
         icon: <BsShieldLock />,
     },
     {
         title: "Strategic Advisory",
-        description: "End-to-end consulting for startups and enterprises entering the Web3 ecosystem.",
+        description: "Consulting for founders entering the Web3 space, from concept to global scaling.",
         icon: <BsGlobe />,
     }
 ];

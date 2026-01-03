@@ -27,12 +27,14 @@
     line-height: 1.1;
     background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.5));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .highlight {
     background: linear-gradient(90deg, #5131E0, #9000AD);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 

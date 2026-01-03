@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { MdOutlineStars } from "react-icons/md";
-import { BsArrowUpRightCircle, BsCodeSlash, BsPhone, BsGraphUp, BsShieldLock, BsArrowLeft, BsArrowRight, BsPeopleFill, BsBriefcaseFill, BsMegaphoneFill, BsChatDots, BsPlayCircleFill, BsCpu } from "react-icons/bs";
+import { BsArrowUpRightCircle, BsCodeSlash, BsPhone, BsGraphUp, BsShieldLock, BsArrowLeft, BsArrowRight, BsPeopleFill, BsBriefcaseFill, BsMegaphoneFill, BsChatDots, BsPlayCircleFill, BsCpu, BsGlobe } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import styles from "./HomePage.module.css";
 
@@ -52,64 +52,34 @@ const HomePage = () => {
     // Services Data
     const services = [
         {
-            title: "KOLs Management / Business Development",
-            description: "TotalScope manages KOL's and forms strategic partnerships to elevate your project's influence.",
-            icon: <BsBriefcaseFill />,
-        },
-        {
-            title: "Community Management",
-            description: "TotalScope handles all aspects of community management, driving engagement and fostering growth.",
-            icon: <BsPeopleFill />,
-        },
-        {
-            title: "Community Moderation",
-            description: "Our team at TotalScope keeps your chat clean, positive, and free from negativity or spam.",
+            title: "Blockchain Architecture",
+            description: "Custom tokenomics, smart contract engineering, and enterprise blockchain deployment for resilient dApps.",
             icon: <BsShieldLock />,
         },
         {
-            title: "Chat Engagements",
-            description: "TotalScope ensures your community stays lively and engaged through active participation and conversation starters.",
-            icon: <BsChatDots />,
-        },
-        {
-            title: "Pro-Raiding Services",
-            description: "We organize powerful social media campaigns to boost your project’s visibility.",
-            icon: <BsMegaphoneFill />,
-        },
-        {
-            title: "Blockchain Development",
-            description: "TotalScope provides expert blockchain development services, creating tokens, smart contracts, or platforms to power your project.",
-            icon: <BsShieldLock />,
-        },
-        {
-            title: "Graphic Designs",
-            description: "We design custom graphics to strengthen your marketing and branding.",
-            icon: <BsPhone />,
-        },
-        {
-            title: "Social Media Setups",
-            description: "TotalScope Agency sets up and optimizes your social media group and channels for a professional community space.",
-            icon: <BsGraphUp />,
-        },
-        {
-            title: "Website & WebApp Development",
-            description: "Custom, scalable web solutions designed for performance and user experience.",
+            title: "Product Engineering",
+            description: "Full-stack development of scalable Web3 platforms and mobile-first decentralized applications.",
             icon: <BsCodeSlash />,
         },
         {
-            title: "Mobile App Development",
-            description: "High-performance iOS and Android applications built with modern frameworks.",
-            icon: <BsPhone />,
+            title: "Global BD & Partnerships",
+            description: "Scaling project reach through KOL management and cross-chain strategic collaborations.",
+            icon: <BsBriefcaseFill />,
         },
         {
-            title: "Animation",
-            description: "Engaging 2D and 3D animations that bring your brand's story to life.",
-            icon: <BsPlayCircleFill />,
+            title: "Community Ecosystems",
+            description: "Building authentic, hyper-engaged communities with a focus on longevity and governance.",
+            icon: <BsPeopleFill />,
         },
         {
-            title: "AI Automation",
-            description: "Streamline your workflows with intelligent AI-powered automation solutions.",
-            icon: <BsCpu />,
+            title: "24/7 Security & Moderation",
+            description: "Proactive governance and moderation systems to protect and nurture community growth.",
+            icon: <BsShieldLock />,
+        },
+        {
+            title: "Strategic Advisory",
+            description: "Consulting for founders entering the Web3 space, from concept to global scaling.",
+            icon: <BsGlobe />,
         }
     ];
 
@@ -169,7 +139,7 @@ const HomePage = () => {
                 <div className={styles.heroContent}>
                     <div className={styles.badge}>
                         <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                        <span>Welcome to TotalScope Agency</span>
+                        <span>Welcome to TotalScope</span>
                     </div>
                     <div className={styles.heroImageContainer}>
                         <img src="/images/hero-globe.png" alt="Crystal Ball" className={styles.heroImage} />
@@ -179,7 +149,7 @@ const HomePage = () => {
                         Move the <span className={styles.highlight}>Modern World.</span>
                     </h1>
                     <p className={styles.subtext}>
-                        We help startups, enterprises, and emerging Web3 brands design, build, and scale powerful digital products
+                        A dynamic force in the global tech ecosystem, architecting powerful digital products for the next wave of Web3 innovation.
                     </p>
 
                     <button className={styles.button} onClick={scrollToContact}>
@@ -255,11 +225,11 @@ const HomePage = () => {
                             </div>
 
                             <div className={`${styles.featureContent}`}>
-                                <h2 className="text-2xl md:text-4xl">
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                     Brands across tech, finance, e-commerce, gaming, and Web3 trust us to bring their vision to life.
                                 </h2>
-                                <button className={styles.featureButton}>
-                                    Book a Session Now <BsArrowUpRightCircle size={18} />
+                                <button className={`${styles.featureButton} w-full md:w-fit justify-center py-6 text-lg sm:text-xl`}>
+                                    Book a Session Now <BsArrowUpRightCircle size={22} />
                                 </button>
                             </div>
                         </div>
@@ -519,7 +489,7 @@ const HomePage = () => {
                 <div className={styles.servicesParent}>
                     Branding Card
                     <div className={styles.brandingCard}>
-                        <img src="/images/totalscopelogo.png" alt="TotalScope Agency" className={styles.brandingLogo} />
+                        <img src="/images/totalscopelogo.png" alt="TotalScope Technology & Web3" className={styles.brandingLogo} />
 
                         Decorative stars
                         <div style={{ position: 'absolute', top: '20%', left: '10%', color: 'white', fontSize: '10px' }}>★</div>
