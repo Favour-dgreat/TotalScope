@@ -1,20 +1,22 @@
 "use client";
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import styles from "../Partners/Partners.module.css";
 import { MdOutlineStars } from "react-icons/md";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 
 const Partners = () => {
     const partners = [
-        "/images/Frame101.png",
-        "/images/Frame102.png",
-        "/images/Frame103.png",
-        "/images/Frame104.png",
-        "/images/Frame105.png",
-        "/images/Frame106.png",
-        "/images/Frame107.png",
+        "/images/partners/6.png",
+        "/images/partners/8.png",
+        "/images/partners/11.png",
+        "/images/partners/13.png",
+        "/images/partners/14.png",
+        "/images/partners/16.png",
+        "/images/partners/outburst.png",
+        "/images/partners/thefeb10.webp",
+        "/images/partners/Tradehere.png",
+        "/images/partners/TOPMOST_LOGOs.png",
     ];
 
     return (

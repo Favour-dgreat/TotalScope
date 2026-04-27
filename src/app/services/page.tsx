@@ -6,9 +6,17 @@ import { motion } from 'framer-motion';
 import {
     BsCodeSlash, BsPeopleFill, BsShieldLock, BsChatDots,
     BsMegaphoneFill, BsPhone, BsBriefcaseFill, BsGraphUp,
-    BsArrowRight, BsCpu, BsGlobe, BsLightningCharge
+    BsArrowRight, BsCpu, BsGlobe, BsLightningCharge,
+    BsTelegram, BsTwitter
 } from 'react-icons/bs';
 import styles from './ServicesPage.module.css';
+
+const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 },
+};
 
 const services = [
     {
@@ -87,6 +95,35 @@ export default function ServicesPage() {
                         </motion.div>
                     ))}
                 </div>
+                <section id="contact" className={styles.contactSection}>
+                <div className={styles.container}>
+                    <motion.div className={styles.contactCard} {...fadeInUp}>
+                        <div className={styles.contactContent}>
+                            <h2 className={styles.contactTitle}>Ready to Build?</h2>
+                            <p className={styles.contactSubtitle}>Let's handle your project with Precision.</p>
+                            
+                            <div className={styles.contactLinks}>
+                                <a href="https://x.com/Totalscope_" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                                    <BsTwitter /> <span>x.com/Totalscope_</span>
+                                </a>
+                                <a href="https://t.me/lexioneth56" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                                    <BsTelegram /> <span>@lexioneth56</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div className={styles.contactAction}>
+                            <motion.button 
+                                className={styles.contactBtn}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Message Us Now
+                            </motion.button>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
             </main>
 
             <Footer />

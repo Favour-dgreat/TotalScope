@@ -32,6 +32,11 @@
     -webkit-text-fill-color: transparent;
 }
 
+
+.postsGrid {
+    margin-bottom: 5rem;
+}
+
 /* Blog Index Card */
 .blogCard {
     background: rgba(255, 255, 255, 0.02);

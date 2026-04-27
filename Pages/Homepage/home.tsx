@@ -1,126 +1,169 @@
 "use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { MdOutlineStars } from "react-icons/md";
-import { BsArrowUpRightCircle, BsCodeSlash, BsPhone, BsGraphUp, BsShieldLock, BsArrowLeft, BsArrowRight, BsPeopleFill, BsBriefcaseFill, BsMegaphoneFill, BsChatDots, BsPlayCircleFill, BsCpu, BsGlobe } from "react-icons/bs";
+import { MdOutlineStars, MdLaunch } from "react-icons/md";
+import { 
+    BsArrowUpRightCircle, 
+    BsCodeSlash, 
+    BsPeopleFill, 
+    BsBriefcaseFill, 
+    BsMegaphoneFill, 
+    BsChatDots, 
+    BsShieldLock, 
+    BsCpu, 
+    BsGlobe,
+    BsTwitterX,
+    BsTelegram,
+    BsCheckCircleFill,
+    BsLightningChargeFill
+} from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import styles from "./HomePage.module.css";
 
+const CountingNumber = ({ value, prefix = "", suffix = "" }: { value: number, prefix?: string, suffix?: string }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+    const motionValue = useMotionValue(0);
+    const springValue = useSpring(motionValue, {
+        stiffness: 100,
+        damping: 30,
+        duration: 2000
+    });
+
+    const displayValue = useTransform(springValue, (latest) => 
+        `${prefix}${Math.floor(latest)}${suffix}`
+    );
+
+    useEffect(() => {
+        if (isInView) {
+            motionValue.set(value);
+        }
+    }, [isInView, value, motionValue]);
+
+    return <motion.span ref={ref}>{displayValue}</motion.span>;
+};
+
 const HomePage = () => {
-    // WorkWithUs State
-    const projects = [
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.play().catch(error => {
+                console.error("Autoplay was prevented:", error);
+            });
+        }
+    }, []);
+
+    // Services Data
+    const growthServices = [
         {
-            title: "FinTech App – Complete Platform Build",
-            description: "Built a cross-platform mobile + web app used by 30,000+ monthly customers.",
-            color: "linear-gradient(45deg, #1a0b2e, #4400ff)"
+            title: "Community Management",
+            description: "We place the right people in your community managers, moderators, raiders, shillers, chatters, and reply guys — all working together to keep your project active, visible, and growing around the clock.",
+            icon: <BsPeopleFill />
         },
         {
-            title: "E-Commerce Dashboard",
-            description: "A comprehensive analytics dashboard for a global retail brand.",
-            color: "linear-gradient(45deg, #2e0b1a, #ff0044)"
+            title: "Content & Social Media management",
+            description: "We manage your social presence and create the content that drives it. From daily posts to campaign rollouts, your brand stays consistent, sharp, and engaging across every platform.",
+            icon: <BsMegaphoneFill />
         },
         {
-            title: "Healthcare Portal",
-            description: "Secure patient management system with telemedicine integration.",
-            color: "linear-gradient(45deg, #0b2e1a, #00ff44)"
+            title: "Token Marketing & Launch",
+            description: "We manage your token’s full lifecycle ..from refining the idea and structuring solid tokenomics to selecting the right launch strategy, building momentum, and driving visibility.",
+            icon: <BsLightningChargeFill />
+        },
+        {
+            title: "Lead Generation",
+            description: "Targeted outreach that brings in real users and partners. We build your pipeline — B2B and B2C — so growth doesn’t slow down.",
+            icon: <BsBriefcaseFill />
+        },
+        {
+            title: "KOL Campaigns",
+            description: "We connect your project with trusted voices in the space. Authentic reach, real engagement, measurable results.",
+            icon: <BsChatDots />
+        },
+        {
+            title: "Strategic Partnerships",
+            description: "We open doors — cross-chain collaborations, ecosystem integrations, and high-value introductions that push your project forward.",
+            icon: <BsGlobe />
         }
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const nextProject = () => {
-        setCurrentIndex((prev) => (prev + 1) % projects.length);
-    };
-
-    const prevProject = () => {
-        setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-    };
-
-    // Partners Data
-    const partners = [
-        "/images/Frame101.png",
-        "/images/Frame102.png",
-        "/images/Frame103.png",
-        "/images/Frame104.png",
-        "/images/Frame105.png",
-        "/images/Frame106.png",
-        "/images/Frame107.png",
-    ];
-
-    // Services Data
-    const services = [
+    const techServices = [
         {
-            title: "Blockchain Architecture",
-            description: "Custom tokenomics, smart contract engineering, and enterprise blockchain deployment for resilient dApps.",
-            icon: <BsShieldLock />,
+            title: "Web & App Development",
+            description: "Full-stack websites, web apps, and mobile applications — built clean, fast, and ready to scale.",
+            icon: <BsCodeSlash />
         },
         {
-            title: "Product Engineering",
-            description: "Full-stack development of scalable Web3 platforms and mobile-first decentralized applications.",
-            icon: <BsCodeSlash />,
+            title: "Blockchain & Smart Contracts",
+            description: "Custom smart contracts, tokenomics design, and dApp development — secure, scalable, and built for the long term.",
+            icon: <BsShieldLock />
         },
         {
-            title: "Global BD & Partnerships",
-            description: "Scaling project reach through KOL management and cross-chain strategic collaborations.",
-            icon: <BsBriefcaseFill />,
-        },
-        {
-            title: "Community Ecosystems",
-            description: "Building authentic, hyper-engaged communities with a focus on longevity and governance.",
-            icon: <BsPeopleFill />,
-        },
-        {
-            title: "24/7 Security & Moderation",
-            description: "Proactive governance and moderation systems to protect and nurture community growth.",
-            icon: <BsShieldLock />,
-        },
-        {
-            title: "Strategic Advisory",
-            description: "Consulting for founders entering the Web3 space, from concept to global scaling.",
-            icon: <BsGlobe />,
+            title: "UI/UX Design",
+            description: "Interfaces that look great and actually work. We design for real users, not just aesthetics.",
+            icon: <BsCpu />
         }
     ];
 
     // Testimonials Data
     const testimonials = [
         {
-            quote: "The best CM I have ever had came from this team! Always there to help and keep things running smoothly. A real community Hero",
-            name: "Hannah",
-            role: "CEO, FinTech Solutions",
-            avatar: "/images/1.png" // Placeholder
+            quote: "TotalScope built our entire platform from scratch and had it live ahead of schedule. Clean execution, zero stress.",
+            name: "Ryan O.",
+            role: "Founder, NexaFi"
         },
         {
-            quote: "We needed a scalable solution fast. The team delivered beyond our expectations.",
-            name: "Vertex",
-            role: "CTO, HealthPlus",
-            avatar: "/images/3.png" // Placeholder
+            quote: "Our community went from quiet to extremely active within weeks. The moderation and engagement team they placed are genuinely incredible.",
+            name: "Sola M.",
+            role: "Project Lead, DropLabs"
         },
         {
-            quote: "A true partner in every sense. They understood our vision and executed it perfectly.",
-            name: "Anakazo",
-            role: "Founder, EcoStyle",
-            avatar: "/images/5.png" // Placeholder
+            quote: "They handled our token launch end to end — tokenomics, launchpad, marketing. We exceeded our targets in the first 48 hours.",
+            name: "James K.",
+            role: "CEO, StackMint"
         },
         {
-            quote: "The best CM I have ever had came from this team! Always there to help and keep things running smoothly. A real community Hero",
-            name: "Hannah",
-            role: "CEO, FinTech Solutions",
-            avatar: "/images/1.png" // Placeholder
+            quote: "The content and social media team understood our brand immediately. Our engagement tripled and the quality never dropped.",
+            name: "Priya N.",
+            role: "CMO, Orbiton"
         },
         {
-            quote: "We needed a scalable solution fast. The team delivered beyond our expectations.",
-            name: "Vertex",
-            role: "CTO, HealthPlus",
-            avatar: "/images/3.png" // Placeholder
+            quote: "Working with TotalScope felt like having an in-house team. They’re fast, transparent, and they actually deliver.",
+            name: "Tobias W.",
+            role: "Co-Founder, ChainVault"
         },
         {
-            quote: "A true partner in every sense. They understood our vision and executed it perfectly.",
-            name: "Anakazo",
-            role: "Founder, EcoStyle",
-            avatar: "/images/5.png" // Placeholder
+            quote: "From UI design to smart contract deployment — one team handled it all. I didn’t have to manage five different agencies anymore.",
+            name: "Amara D.",
+            role: "Founder, pulseDAO"
         }
+    ];
+
+    // Partners Data
+    const partners = [
+        "/images/partners/6.png",
+        "/images/partners/8.png",
+        "/images/partners/11.png",
+        "/images/partners/13.png",
+        "/images/partners/14.png",
+        "/images/partners/16.png",
+        "/images/partners/logored.png",
+        "/images/partners/thefeb10.webp",
+        "/images/partners/Tradehere.png",
+        "/images/partners/TOPMOST_LOGOs.png",
+        "/images/partners/GC_Logo.png",
+        "/images/partners/ROAD1.png",
+
+    ];
+
+    // Achievements Data
+    const achievements = [
+        { label: "Happy Clients", value: 170, suffix: "+" },
+        { label: "Success Rate", value: 95, suffix: "%" },
+        { label: "Years in Market", value: 3, prefix: "+" }
     ];
 
     const scrollToContact = () => {
@@ -130,470 +173,258 @@ const HomePage = () => {
         }
     };
 
+    const fadeInUp = {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { duration: 0.6 }
+    };
+
     return (
-        <div>
+        <div className={styles.pageWrapper}>
             <Navbar />
 
             {/* HERO SECTION */}
-            <section className={styles.HeroSection}>
-                <div className={styles.heroContent}>
-                    <div className={styles.badge}>
-                        <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                        <span>Welcome to TotalScope</span>
+            <section className={styles.heroSection}>
+                <div className={styles.heroBackground}>
+                    <video 
+                        ref={videoRef}
+                        autoPlay 
+                        muted 
+                        loop 
+                        playsInline 
+                        className={styles.bgVideo}
+                        preload="auto"
+                    >
+                        <source src="/images/bg-video.mp4" type="video/mp4" />
+                    </video>
+                    <div className={styles.gradientGlow}></div>
+                    <div className={styles.gridOverlay}></div>
+                </div>
+                
+                <motion.div 
+                    className={styles.heroContainer}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <div className={styles.heroBadge}>
+                        <MdOutlineStars className={styles.badgeIcon} />
+                        <span>Building with Precision</span>
                     </div>
-                    <div className={styles.heroImageContainer}>
-                        <img src="/images/hero-globe.png" alt="Crystal Ball" className={styles.heroImage} />
-                    </div>
-                    <h1 className={styles.h1}>
-                        Building Solutions That <br />
-                        Move the <span className={styles.highlight}>Modern World.</span>
+                    
+                    <h1 className={styles.heroTitle}>
+                        Your Full-Stack Partner for <br />
+                        <span className={styles.purpleGradientText}>Web3 & Tech.</span>
                     </h1>
-                    <p className={styles.subtext}>
-                        A dynamic force in the global tech ecosystem, architecting powerful digital products for the next wave of Web3 innovation.
+                    
+                    <p className={styles.heroSubtitle}>
+                        Whether you’re launching a token, building a product, or scaling a brand — we handle development, marketing, and community so you don’t have to.
                     </p>
+                    
+                    <motion.button 
+                        className={styles.primaryButton} 
+                        onClick={scrollToContact}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Let’s Talk <BsArrowUpRightCircle size={20} />
+                    </motion.button>
+                </motion.div>
 
-                    <button className={styles.button} onClick={scrollToContact}>
-                        Let's Work Together <span className={styles.arrow}> <BsArrowUpRightCircle size={20} />
-                        </span>
-                    </button>
+                {/* Decorative floating elements */}
+                <div className={styles.floatingObjects}>
+                    <motion.div 
+                        className={styles.object1}
+                        animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    ></motion.div>
+                    <motion.div 
+                        className={styles.object2}
+                        animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                    ></motion.div>
                 </div>
-
-                <div className={styles.globeContainer}>
-                    <img src="/images/hero-globe.png" alt="Crystal Ball" className={styles.globe} />
-                </div>
-
-                {/* Decorative elements */}
-                <div className={styles.star1}>★</div>
-                <div className={styles.star2}>★</div>
-                <div className={styles.star3}>★</div>
-                <div className={styles.star4}>★</div>
-                <div className={styles.star5}>★</div>
-                <div className={styles.star6}>★</div>
-                <div className={styles.star7}>★</div>
-                <div className={styles.star8}>★</div>
-                <div className={styles.star9}>★</div>
-                <div className={styles.star10}>★</div>
-                <div className={styles.star11}>★</div>
-                <div className={styles.star12}>★</div>
-                <div className={styles.star13}>★</div>
-                <div className={styles.star14}>★</div>
-                <div className={styles.star15}>★</div>
-                <div className={styles.star16}>★</div>
             </section>
-
-            {/* PARTNERS SECTION */}
-            <div className={styles.partnersPage}>
-                <main className={styles.partnersMain}>
-                    {/* Header Section */}
-                    <section className={styles.partnersHeader}>
-                        <div className={styles.partnersBadge}>
-                            <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                            <span>Our Clients</span>
-                        </div>
-                        <h1 className={styles.partnersTitle}>
-                            We Build for <span className={styles.textBlue}>Founders,</span><br />
-                            Creators, and Global Teams
-                        </h1>
-                    </section>
-
-                    {/* Logos Section */}
-                    <section className={`${styles.partnersLogos} hidden md:flex`}>
-                        <div className={`${styles.logoGrid}`}>
-                            {/* Duplicate the list to create seamless infinite scroll */}
-                            {[...partners, ...partners].map((src, index) => (
-                                <div key={index} className={styles.logoItem}>
-                                    <img src={src} alt={`Partner ${index + 1}`} />
+             {/* WHY TOTALSCOPE */}
+            <section className={styles.whySection}>
+                <div className={styles.container}>
+                    <div className={styles.whyContent}>
+                        <motion.div className={styles.whyLeft} {...fadeInUp}>
+                            <div className={styles.sectionBadge}>WHY TOTALSCOPE</div>
+                            <h2 className={styles.sectionTitle}>One team. Every layer. <br /><span className={styles.purpleText}>No gaps.</span></h2>
+                            <p className={styles.whyDescription}>
+                                We bring together marketers, developers, community specialists, and strategists under one roof — so your project moves as one unit from day one to launch and beyond.
+                            </p>
+                        </motion.div>
+                        <motion.div className={styles.whyRight} {...fadeInUp}>
+                            <div className={styles.statCard}>
+                                <div className={styles.statGlow}></div>
+                                <img src="/images/totalscopelogo.png" alt="Logo" className={styles.whyLogo} />
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+{/* ACHIEVEMENTS */}
+            <section className={styles.achievementsSection}>
+                <div className={styles.container}>
+                    <motion.div className={styles.achievementContent} {...fadeInUp}>
+                        <div className={styles.sectionBadge}>ACHIEVEMENTS</div>
+                        <h2 className={styles.sectionTitle}>Proud of What We’ve Built.</h2>
+                        <p className={styles.achievementSubtitle}>
+                            TotalScope powers end-to-end digital growth for Web3 brands and tech products ..cutting execution time while delivering sharp, high-conversion experiences that move the needle.
+                        </p>
+                        
+                        <div className={styles.achievementGrid}>
+                            {achievements.map((a, index) => (
+                                <div key={index} className={styles.achievementItem}>
+                                    <h3 className={styles.achievementValue}>
+                                        <CountingNumber value={a.value} prefix={a.prefix} suffix={a.suffix} />
+                                    </h3>
+                                    <p className={styles.achievementLabel}>{a.label}</p>
                                 </div>
                             ))}
                         </div>
-                    </section>
-
-                    {/* Feature Card Section */}
-                    <section className={styles.featureSection}>
-                        <div className={styles.featureCard}>
-                            <div className={`${styles.featureImageContainer} hidden md:flex`}>
-                                {/* Placeholder for the person image */}
-                                <img src="/images/ww.jpg" alt="Satisfied Client" className={styles.featureImage} />
-                                <div className={`${styles.statBadge} ${styles.topRight}`}>
-                                    <span className={styles.statNumber}>20+</span>
-                                    <span className={styles.statLabel}>Satisfied Client</span>
-                                </div>
-                                <div className={`${styles.statBadge} ${styles.bottomLeft}`}>
-                                    <span className={styles.statNumber}>20+</span>
-                                    <span className={styles.statLabel}>Projects Delivered</span>
-                                </div>
-                            </div>
-
-                            <div className={`${styles.featureContent}`}>
-                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-                                    Brands across tech, finance, e-commerce, gaming, and Web3 trust us to bring their vision to life.
-                                </h2>
-                                <button className={`${styles.featureButton} w-full md:w-fit justify-center py-6 text-lg sm:text-xl`}>
-                                    Book a Session Now <BsArrowUpRightCircle size={22} />
-                                </button>
-                            </div>
-                        </div>
-                    </section>
-                </main>
-            </div>
-
-            {/* INTRO SECTION */}
-            <section className={styles.introSection}>
-                <div className={styles.introHeader}>
-                    <div className={styles.badge}>
-                        <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                        <span>What we do</span>
-                    </div>
-                    <h2 className={styles.whoTitle}>
-                        Solutions Designed For  <span className={styles.highlight}>Impact</span>
-                    </h2>
+                    </motion.div>
                 </div>
+            </section>
+            
 
-                <div className={styles.solutionsGrid}>
-                    {services.map((service, index) => {
-                        const styleIndex = index % 3;
-                        const glowClasses = [styles.cardPurple, styles.cardBlue, styles.cardMagenta];
-                        const iconColors = [styles.purple, styles.blue, styles.magenta];
+            {/* SERVICES SECTION */}
+            <section className={styles.servicesSection}>
+                <div className={styles.container}>
+                    <motion.div className={styles.sectionHeader} {...fadeInUp}>
+                        <div className={styles.sectionBadge}>SERVICES</div>
+                        <h2 className={styles.sectionTitle}>Growth & Marketing</h2>
+                    </motion.div>
 
-                        const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-                            const card = e.currentTarget;
-                            const rect = card.getBoundingClientRect();
-                            const x = e.clientX - rect.left;
-                            const y = e.clientY - rect.top;
-                            card.style.setProperty("--mouse-x", `${x}px`);
-                            card.style.setProperty("--mouse-y", `${y}px`);
-                        };
-
-                        return (
-                            <div
-                                key={index}
-                                className={`${styles.solutionCard} ${glowClasses[styleIndex]}`}
-                                onMouseMove={handleMouseMove}
+                    <div className={styles.servicesGrid}>
+                        {growthServices.map((service, index) => (
+                            <motion.div 
+                                key={index} 
+                                className={styles.serviceCard}
+                                {...fadeInUp}
+                                transition={{ delay: index * 0.1 }}
                             >
-                                {/* Background depth icon */}
-                                <div className={styles.solutionBgIcon}>
+                                <div className={styles.serviceIconContainer}>
                                     {service.icon}
                                 </div>
+                                <h3 className={styles.serviceTitle}>{service.title}</h3>
+                                <p className={service.description && styles.serviceDescription}>{service.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
 
-                                <div className={`${styles.solutionIconBox} ${iconColors[styleIndex]}`}>
+                    <motion.div className={styles.sectionHeader} {...fadeInUp} style={{ marginTop: '6rem' }}>
+                        <h2 className={styles.sectionTitle}>Tech & Development</h2>
+                    </motion.div>
+
+                    <div className={styles.servicesGrid}>
+                        {techServices.map((service, index) => (
+                            <motion.div 
+                                key={index} 
+                                className={styles.serviceCard}
+                                {...fadeInUp}
+                                transition={{ delay: index * 0.1 }}
+                            >
+                                <div className={styles.serviceIconContainer}>
                                     {service.icon}
                                 </div>
-                                <div className={styles.solutionCardContent} style={{ zIndex: 1 }}>
-                                    <h3 className={styles.introCardTitle} style={{ marginBottom: '0.5rem' }}>{service.title}</h3>
-                                    <p className={styles.introCardDescription}>
-                                        {service.description}
-                                    </p>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </section>
-
-            {/* TRANSITION TEXT */}
-            <div className={styles.transitionSection}>
-                <motion.h2
-                    className={styles.transitionTitle}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    variants={{
-                        visible: {
-                            transition: {
-                                staggerChildren: 0.03,
-                            }
-                        }
-                    }}
-                >
-                    {/* "From " */}
-                    {"From ".split("").map((char, i) => (
-                        <motion.span key={i} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                            {char}
-                        </motion.span>
-                    ))}
-
-                    {/* "design to development" */}
-                    <span className={styles.glowText}>
-                        {"design to development".split("").map((char, i) => (
-                            <motion.span key={i} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                                {char}
-                            </motion.span>
+                                <h3 className={styles.serviceTitle}>{service.title}</h3>
+                                <p className={styles.serviceDescription}>{service.description}</p>
+                            </motion.div>
                         ))}
-                    </span>
-                    <br />
-
-                    {/* "to growth" */}
-                    <span className={styles.glowText}>
-                        {"to growth".split("").map((char, i) => (
-                            <motion.span key={i} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                                {char}
-                            </motion.span>
-                        ))}
-                    </span>
-
-                    {/* ", we handle the" */}
-                    {", we handle the".split("").map((char, i) => (
-                        <motion.span key={i} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                            {char}
-                        </motion.span>
-                    ))}
-                    <br />
-
-                    {/* "entire project lifecycle." */}
-                    {"entire project lifecycle.".split("").map((char, i) => (
-                        <motion.span key={i} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                            {char}
-                        </motion.span>
-                    ))}
-                </motion.h2>
-            </div>
-            <section className={styles.workWithUsSection}>
-                <div className={styles.workHeader}>
-                    <div className={`${styles.workHeaderLeft} items-center md:items-start w-full md:w-auto`}>
-                        <div className={`${styles.badge} mx-auto md:mx-0`}>
-                            <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                            <span>Our Portfolio</span>
-                        </div>
-                        <h2 className={`${styles.workTitle} text-center md:text-left`}>
-                            Featured <span className={styles.highlight}>Work</span>
-                        </h2>
-                    </div>
-
-                    <div className={`${styles.workHeaderRight} justify-center md:justify-end w-full md:w-auto`}>
-                        <button className={`${styles.exploreButton} hidden md:flex`}>
-                            Explore All Case Studies <BsArrowUpRightCircle size={18} />
-                        </button>
-                    </div>
-                </div>
-
-                <div className={styles.featuredCardContainer}>
-                    <div key={currentIndex} className={styles.featuredCard}>
-                        <div className={styles.projectImageContainer}>
-                            {/* Placeholder for project image */}
-                            <div style={{ width: '100%', height: '100%', background: projects[currentIndex].color, transition: 'background 0.5s ease' }}></div>
-                        </div>
-
-                        <div className={styles.projectContent}>
-                            <h3 className={styles.projectTitle}>{projects[currentIndex].title}</h3>
-                            <p className={styles.projectDescription}>
-                                {projects[currentIndex].description}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.navButtonsContainer}>
-                    <button onClick={prevProject} className={styles.navButton} aria-label="Previous Project">
-                        <BsArrowLeft size={24} />
-                    </button>
-                    <button onClick={nextProject} className={styles.navButton} aria-label="Next Project">
-                        <BsArrowRight size={24} />
-                    </button>
-                </div>
-
-                {/* Why Collaborate Section */}
-                <div className={styles.whyCollaborateSection}>
-                    <div className={styles.centerHeader}>
-                        <div className={styles.badge}>
-                            <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                            <span>Why Choose Us</span>
-                        </div>
-                        <h2 className={styles.workTitle}>
-                            Why Collaborate with<br />
-                            <span className={styles.highlight}>TotalScope</span>
-                        </h2>
-                    </div>
-
-                    <div className={styles.featureGrid}>
-                        <div className={styles.collaborateFeatureCard}>
-                            <div className={styles.collaborateFeatureIcon}>
-                                <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={24} />
-                            </div>
-                            <div className={styles.collaborateFeatureContent}>
-                                <h3 className={styles.collaborateFeatureTitle}>Full Creative & Technical Team</h3>
-                                <p className={styles.collaborateFeatureDescription}>Designers, developers, marketers, analysts, and strategists in one place.</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.collaborateFeatureCard}>
-                            <div className={styles.collaborateFeatureIcon}>
-                                <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={24} />
-                            </div>
-                            <div className={styles.collaborateFeatureContent}>
-                                <h3 className={styles.collaborateFeatureTitle}>End-to-End Execution</h3>
-                                <p className={styles.collaborateFeatureDescription}>Strategy → Design → Development → Launch → Growth.</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.collaborateFeatureCard}>
-                            <div className={styles.collaborateFeatureIcon}>
-                                <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={24} />
-                            </div>
-                            <div className={styles.collaborateFeatureContent}>
-                                <h3 className={styles.collaborateFeatureTitle}>Data-Driven Approach</h3>
-                                <p className={styles.collaborateFeatureDescription}>Every decision backed by analytics and user insights.</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.collaborateFeatureCard}>
-                            <div className={styles.collaborateFeatureIcon}>
-                                <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={24} />
-                            </div>
-                            <div className={styles.collaborateFeatureContent}>
-                                <h3 className={styles.collaborateFeatureTitle}>Cross-Industry Expertise</h3>
-                                <p className={styles.collaborateFeatureDescription}>SaaS, fintech, e-commerce, Web3, gaming, education, and more.</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.collaborateFeatureCard}>
-                            <div className={styles.collaborateFeatureIcon}>
-                                <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={24} />
-                            </div>
-                            <div className={styles.collaborateFeatureContent}>
-                                <h3 className={styles.collaborateFeatureTitle}>Reliable Delivery</h3>
-                                <p className={styles.collaborateFeatureDescription}>On-time execution with transparent communication.</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.collaborateFeatureCard}>
-                            <div className={styles.collaborateFeatureIcon}>
-                                <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={24} />
-                            </div>
-                            <div className={styles.collaborateFeatureContent}>
-                                <h3 className={styles.collaborateFeatureTitle}>Innovation at the Core</h3>
-                                <p className={styles.collaborateFeatureDescription}>Modern, future-ready solutions that give your brand a competitive edge.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={styles.ctaContainer}>
-                        <button className={styles.ctaButton}>
-                            Let's Build Something Exceptional <BsArrowUpRightCircle size={20} />
-                        </button>
                     </div>
                 </div>
             </section>
 
-            SERVICES SECTION
-            {/* <section className={styles.servicesSection}>
-                <div className={styles.servicesHeader}>
-                    <div className={styles.badge}>
-                        <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                        <span>What we do</span>
+           {/* PARTNERS SECTION */}
+            <section className={styles.partnersSection}>
+                <div className={styles.container}>
+                    <div className={styles.sectionHeader} {...fadeInUp}>
+                        <h2 className={styles.sectionTitle}>Key Clients</h2>
                     </div>
-                    <h2 className={styles.servicesTitle}>
-                        Solutions Designed for <span className={styles.highlight}>Impact</span>
-                    </h2>
-                </div>
-
-                <div className={styles.servicesParent}>
-                    Branding Card
-                    <div className={styles.brandingCard}>
-                        <img src="/images/totalscopelogo.png" alt="TotalScope Technology & Web3" className={styles.brandingLogo} />
-
-                        Decorative stars
-                        <div style={{ position: 'absolute', top: '20%', left: '10%', color: 'white', fontSize: '10px' }}>★</div>
-                        <div style={{ position: 'absolute', top: '10%', right: '10%', color: 'white', fontSize: '10px' }}>★</div>
-                        <div style={{ position: 'absolute', bottom: '30%', right: '20%', color: 'white', fontSize: '10px' }}>★</div>
-                    </div>
-
-                    Service Cards Container
-                    <div className={styles.servicesScrollContainer}>
-                        {services.map((service, index) => (
-                            <div key={index} className={styles.serviceCard}>
-                                <div className={styles.iconContainer}>
-                                    {service.icon}
-                                </div>
-                                <h3 className={styles.serviceItemTitle}>{service.title}</h3>
-                                <p className={styles.serviceItemDescription}>{service.description}</p>
-                            </div>
+                    
+                    <div className={styles.partnersGrid}>
+                        {partners.map((logo, index) => (
+                            <motion.div 
+                                key={index} 
+                                className={styles.partnerCard}
+                                {...fadeInUp}
+                                transition={{ delay: index * 0.05 }}
+                            >
+                                <img src={logo} alt={`Partner ${index}`} className={styles.partnerImg} />
+                            </motion.div>
                         ))}
                     </div>
                 </div>
-            </section> */}
+            </section>
 
-            {/* WORK WITH US SECTION */}
-
-
-            {/* TESTIMONIALS SECTION */}
+            {/* TESTIMONIALS */}
             <section className={styles.testimonialsSection}>
-                <div className={styles.testimonialsHeader}>
-                    <div className={styles.badge}>
-                        <MdOutlineStars fill="rgba(144, 0, 173, 1)" size={20} />
-                        <span>Testimonials</span>
-                    </div>
-                    <h2 className={styles.testimonialsTitle}>
-                        Hear from Our <span className={styles.highlight}>Clients</span>
-                    </h2>
-                </div>
+                <div className={styles.container}>
+                    <motion.div className={styles.sectionHeader} {...fadeInUp}>
+                        <div className={styles.sectionBadge}>TESTIMONIALS</div>
+                        <h2 className={styles.sectionTitle}>Trusted by Founders</h2>
+                    </motion.div>
 
-                <div className={styles.testimonialCarouselContainer}>
                     <div className={styles.testimonialGrid}>
-                        {[...testimonials, ...testimonials].map((item, index) => (
-                            <div key={index} className={styles.testimonialCard}>
+                        {testimonials.map((t, index) => (
+                            <motion.div 
+                                key={index} 
+                                className={styles.testimonialCard}
+                                {...fadeInUp}
+                                transition={{ delay: index * 0.05 }}
+                            >
                                 <FaQuoteLeft className={styles.quoteIcon} />
-                                <p className={styles.quoteText}>"{item.quote}"</p>
-                                <div className={styles.author}>
-                                    {/* Avatar */}
-                                    <div className={styles.avatar}>
-                                        <img src={item.avatar} alt="Avatar" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
-                                    </div>
-                                    <div className={styles.authorInfo}>
-                                        <span className={styles.authorName}>{item.name}</span>
+                                <p className={styles.testimonialQuote}>{t.quote}</p>
+                                <div className={styles.testimonialAuthor}>
+                                    <div>
+                                        <p className={styles.authorName}>{t.name}</p>
+                                        <p className={styles.authorRole}>{t.role}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* REACHOUT SECTION */}
-            <section className={styles.reachoutSection} id="contact">
-                <div className={styles.contentWrapper}>
-                    <h2 className={styles.headline}>
-                        We turn ambitious ideas into
-                    </h2>
-                    <h2 className={styles.subHeadline}>
-                        profitable, scalable digital products.
-                    </h2>
-                    <p className={styles.description}>
-                        Your competitive advantage starts here—with a team built for innovation.
-                    </p>
+            
 
-                    <form className={styles.formContainer}>
-                        <div className={styles.formInputGroup}>
-                            <label className={styles.label} htmlFor="name">Name</label>
-                            <input type="text" id="name" className={styles.formInput} placeholder="Your Name" />
+            {/* CONTACT */}
+            <section id="contact" className={styles.contactSection}>
+                <div className={styles.container}>
+                    <motion.div className={styles.contactCard} {...fadeInUp}>
+                        <div className={styles.contactContent}>
+                            <h2 className={styles.contactTitle}>Ready to Scale?</h2>
+                            <p className={styles.contactSubtitle}>Let's handle your project with Precision.</p>
+                            
+                            <div className={styles.contactLinks}>
+                                <a href="https://x.com/Totalscope_" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                                    <BsTwitterX /> <span>x.com/Totalscope_</span>
+                                </a>
+                                <a href="https://t.me/lexioneth56" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                                    <BsTelegram /> <span>@lexioneth56</span>
+                                </a>
+                            </div>
                         </div>
-
-                        <div className={styles.formInputGroup}>
-                            <label className={styles.label} htmlFor="email">Email</label>
-                            <input type="email" id="email" className={styles.formInput} placeholder="your@email.com" />
+                        
+                        <div className={styles.contactAction}>
+                            <motion.button 
+                                className={styles.contactBtn}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Message Us Now
+                            </motion.button>
                         </div>
-
-                        <div className={styles.formInputGroup}>
-                            <label className={styles.label} htmlFor="message">Project Idea</label>
-                            <textarea id="message" className={styles.formTextarea} placeholder="Tell us about your project..."></textarea>
-                        </div>
-
-                        <button type="submit" className={styles.submitButton}>
-                            Let's Talk <BsArrowUpRightCircle size={18} />
-                        </button>
-                    </form>
+                    </motion.div>
                 </div>
-
-
-
-                {/* Decorative Stars */}
-                <div style={{ position: 'absolute', top: '20%', left: '10%', color: '#4400ff', fontSize: '10px' }}>★</div>
-                <div style={{ position: 'absolute', top: '15%', right: '15%', color: '#4400ff', fontSize: '10px' }}>★</div>
-                <div style={{ position: 'absolute', bottom: '40%', left: '20%', color: '#4400ff', fontSize: '10px' }}>★</div>
-                <div style={{ position: 'absolute', bottom: '30%', right: '10%', color: '#4400ff', fontSize: '10px' }}>★</div>
             </section>
 
             <Footer />
-
         </div>
     );
 };
