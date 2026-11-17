@@ -95,7 +95,7 @@ const HomePage = () => {
             icon: <BsMegaphoneFill />,
             items: [
                 "Project Artwork", "Branding",
-                "Memesites", "AI-Generated Content",
+                "Memesites", "Generative AI",
                 "Social Media Management", "Token Marketing",
                 "Lead Generation", "Marketing Strategists"
             ]
