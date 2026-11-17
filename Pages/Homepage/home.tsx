@@ -57,54 +57,33 @@ const HomePage = () => {
     }, []);
 
     // Services Data
-    const growthServices = [
+    const serviceCategories: { title: string; items: string[]; wide?: string }[] = [
         {
-            title: "Community Management",
-            description: "We place the right people in your community managers, moderators, raiders, shillers, chatters, and reply guys — all working together to keep your project active, visible, and growing around the clock.",
-            icon: <BsPeopleFill />
+            title: "Technology & Product Development",
+            items: [
+                "Developers", "Designers",
+                "Website Development", "Application Development",
+                "Blockchain Solutions", "Smart Contracts",
+                "UI/UX Design", "Project Foundations"
+            ]
         },
         {
-            title: "Content & Social Media management",
-            description: "We manage your social presence and create the content that drives it. From daily posts to campaign rollouts, your brand stays consistent, sharp, and engaging across every platform.",
-            icon: <BsMegaphoneFill />
+            title: "Community Services",
+            items: [
+                "Community Managers", "Moderators",
+                "X Mainstreamers", "Raiders",
+                "Shillers", "Native Chatters / BitcoinTalk"
+            ],
+            wide: "Pump.funers"
         },
         {
-            title: "Token Marketing & Launch",
-            description: "We manage your token’s full lifecycle ..from refining the idea and structuring solid tokenomics to selecting the right launch strategy, building momentum, and driving visibility.",
-            icon: <BsLightningChargeFill />
-        },
-        {
-            title: "Lead Generation",
-            description: "Targeted outreach that brings in real users and partners. We build your pipeline — B2B and B2C — so growth doesn’t slow down.",
-            icon: <BsBriefcaseFill />
-        },
-        {
-            title: "KOL Campaigns",
-            description: "We connect your project with trusted voices in the space. Authentic reach, real engagement, measurable results.",
-            icon: <BsChatDots />
-        },
-        {
-            title: "Strategic Partnerships",
-            description: "We open doors — cross-chain collaborations, ecosystem integrations, and high-value introductions that push your project forward.",
-            icon: <BsGlobe />
-        }
-    ];
-
-    const techServices = [
-        {
-            title: "Web & App Development",
-            description: "Full-stack websites, web apps, and mobile applications — built clean, fast, and ready to scale.",
-            icon: <BsCodeSlash />
-        },
-        {
-            title: "Blockchain & Smart Contracts",
-            description: "Custom smart contracts, tokenomics design, and dApp development — secure, scalable, and built for the long term.",
-            icon: <BsShieldLock />
-        },
-        {
-            title: "UI/UX Design",
-            description: "Interfaces that look great and actually work. We design for real users, not just aesthetics.",
-            icon: <BsCpu />
+            title: "Creative & Marketing",
+            items: [
+                "Project Artwork", "Branding",
+                "Memesites", "AI-Generated Content",
+                "Social Media Management", "Token Marketing",
+                "Lead Generation", "Marketing Strategists"
+            ]
         }
     ];
 
@@ -142,28 +121,67 @@ const HomePage = () => {
         }
     ];
 
-    // Partners Data
-    const partners = [
-        "/images/partners/6.png",
-        "/images/partners/8.png",
-        "/images/partners/11.png",
-        "/images/partners/13.png",
-        "/images/partners/14.png",
-        "/images/partners/16.png",
-        "/images/partners/logored.png",
-        "/images/partners/thefeb10.webp",
-        "/images/partners/Tradehere.png",
-        "/images/partners/TOPMOST_LOGOs.png",
-        "/images/partners/GC_Logo.png",
-        "/images/partners/ROAD1.png",
+    // Key Clients
+    const clients = [
+        "NexaFi", "DropLabs", "StackMint", "Orbiton", "ChainVault",
+        "pulseDAO", "DTP", "COR", "PUT", "AzkabanDAO"
+    ];
 
+    // Our Flex
+    const flexBlocks: { title: string; items: React.ReactNode[]; note: string }[] = [
+        {
+            title: "Selected Builds",
+            items: [
+                <><strong>Cortex AI GPU Rent Bot</strong> — Telegram GPU rental interface and supporting website.</>,
+                <><strong>Launchpad Platforms</strong> — Token launch infrastructure and project participation workflows.</>,
+                <><strong>Gaming Applications</strong> — Interactive gaming platforms and Web3 gaming experiences.</>,
+                <><strong>Telegram Mini-Apps &amp; Bots</strong> — Custom interactive applications and automated product systems.</>
+            ],
+            note: "These are just a few examples of the products and technical solutions we've built and worked on, with many more across different industries and use cases."
+        },
+        {
+            title: "Technical Expertise",
+            items: [
+                "Full-stack web and application development.",
+                "Blockchain and Web3 product development.",
+                "Smart contract development and integration.",
+                "AI-powered applications and automation.",
+                "DeFi, staking and token management platforms.",
+                "NFT marketplaces and digital asset applications.",
+                "UI/UX design, product architecture and MVP development."
+            ],
+            note: ""
+        },
+        {
+            title: "Meme Marketing & Campaign Flex",
+            items: [
+                <><strong>$ADILLO</strong> — Market cap moved from $600K to $8M during the campaign, driven by our X Mainstreamers.</>,
+                <><strong>$MOKSHA</strong> — Campaign associated with a reported 500% market-cap increase within two hours.</>,
+                <><strong>$PEPEWICK</strong> — Meme content distribution and community campaign execution.</>,
+                <><strong>$FROGT</strong> — Coordinated meme marketing and social engagement.</>,
+                <><strong>$WOJAKX</strong> — Community-led meme campaign execution.</>
+            ],
+            note: "These represent only a selection of the meme campaigns and marketing executions we've delivered, with many more across different communities and ecosystems."
+        },
+        {
+            title: "Community Services",
+            items: [
+                "Built and coordinated teams of raiders, shillers, native chatters, moderators and community managers.",
+                <>Scaled and managed <strong>80+ crypto communities</strong>.</>,
+                <>Helped <strong>Dulu Gaming</strong> reach 2,000+ active players on launch day.</>,
+                <>Helped onboard 200+ <strong>alpha testers and node miners</strong> for <strong>Cortensor ($COR)</strong>.</>,
+                "Delivered Telegram and Discord moderation, active chat engagement and community operations.",
+                "Organised coordinated raiding, shilling and X engagement campaigns."
+            ],
+            note: "These are just a few highlights from our community operations, with many more communities supported and campaigns executed."
+        }
     ];
 
     // Achievements Data
-    const achievements = [
+    const achievements: { label: string; value: number; prefix?: string; suffix?: string }[] = [
         { label: "Happy Clients", value: 170, suffix: "+" },
         { label: "Success Rate", value: 95, suffix: "%" },
-        { label: "Years in Market", value: 3, prefix: "+" }
+        { label: "Years in Market", value: 4 }
     ];
 
     const scrollToContact = () => {
@@ -219,7 +237,7 @@ const HomePage = () => {
                     </h1>
                     
                     <p className={styles.heroSubtitle}>
-                        Whether you’re launching a token, building a product, or scaling a brand — we handle development, marketing, and community so you don’t have to.
+                        An agency that lets our clients focus on their products while we handle community growth, marketing, launch and post-launch support, with the added ability to develop products from the ground up when needed.
                     </p>
                     
                     <motion.button 
@@ -252,9 +270,9 @@ const HomePage = () => {
                     <div className={styles.whyContent}>
                         <motion.div className={styles.whyLeft} {...fadeInUp}>
                             <div className={styles.sectionBadge}>WHY TOTALSCOPE</div>
-                            <h2 className={styles.sectionTitle}>One team. Every layer. <br /><span className={styles.purpleText}>No gaps.</span></h2>
+                            <h2 className={styles.sectionTitle}>One team. <span className={styles.purpleText}>Everything.</span></h2>
                             <p className={styles.whyDescription}>
-                                We bring together marketers, developers, community specialists, and strategists under one roof — so your project moves as one unit from day one to launch and beyond.
+                                Developers, community specialists and marketers work under one roof, keeping everything connected as your project moves from the first idea to launch and beyond.
                             </p>
                         </motion.div>
                         <motion.div className={styles.whyRight} {...fadeInUp}>
@@ -296,65 +314,44 @@ const HomePage = () => {
                 <div className={styles.container}>
                     <motion.div className={styles.sectionHeader} {...fadeInUp}>
                         <div className={styles.sectionBadge}>SERVICES</div>
-                        <h2 className={styles.sectionTitle}>Growth & Marketing</h2>
+                        <h2 className={styles.sectionTitle}>What We Do</h2>
                     </motion.div>
 
-                    <div className={styles.servicesGrid}>
-                        {growthServices.map((service, index) => (
-                            <motion.div 
-                                key={index} 
-                                className={styles.serviceCard}
-                                {...fadeInUp}
-                                transition={{ delay: index * 0.1 }}
-                            >
-                                <div className={styles.serviceIconContainer}>
-                                    {service.icon}
+                    <motion.div className={styles.serviceChart} {...fadeInUp}>
+                        {serviceCategories.map((cat) => (
+                            <div key={cat.title} className={styles.serviceRow}>
+                                <h3 className={styles.serviceCategory}>{cat.title}</h3>
+                                <div className={styles.pillGrid}>
+                                    {cat.items.map((item) => (
+                                        <span key={item} className={styles.servicePill}>{item}</span>
+                                    ))}
+                                    {cat.wide && (
+                                        <span className={`${styles.servicePill} ${styles.servicePillWide}`}>{cat.wide}</span>
+                                    )}
                                 </div>
-                                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                                <p className={service.description && styles.serviceDescription}>{service.description}</p>
-                            </motion.div>
+                            </div>
                         ))}
-                    </div>
-
-                    <motion.div className={styles.sectionHeader} {...fadeInUp} style={{ marginTop: '6rem' }}>
-                        <h2 className={styles.sectionTitle}>Tech & Development</h2>
                     </motion.div>
-
-                    <div className={styles.servicesGrid}>
-                        {techServices.map((service, index) => (
-                            <motion.div 
-                                key={index} 
-                                className={styles.serviceCard}
-                                {...fadeInUp}
-                                transition={{ delay: index * 0.1 }}
-                            >
-                                <div className={styles.serviceIconContainer}>
-                                    {service.icon}
-                                </div>
-                                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                                <p className={styles.serviceDescription}>{service.description}</p>
-                            </motion.div>
-                        ))}
-                    </div>
                 </div>
             </section>
 
-           {/* PARTNERS SECTION */}
+            {/* KEY CLIENTS */}
             <section className={styles.partnersSection}>
                 <div className={styles.container}>
-                    <div className={styles.sectionHeader} {...fadeInUp}>
-                        <h2 className={styles.sectionTitle}>Key Clients</h2>
-                    </div>
-                    
-                    <div className={styles.partnersGrid}>
-                        {partners.map((logo, index) => (
-                            <motion.div 
-                                key={index} 
-                                className={styles.partnerCard}
+                    <motion.div className={styles.sectionHeader} {...fadeInUp}>
+                        <div className={styles.sectionBadge}>KEY CLIENTS</div>
+                        <h2 className={styles.sectionTitle}>Trusted by Founders.</h2>
+                    </motion.div>
+
+                    <div className={styles.clientGrid}>
+                        {clients.map((name, index) => (
+                            <motion.div
+                                key={name}
+                                className={styles.clientCell}
                                 {...fadeInUp}
                                 transition={{ delay: index * 0.05 }}
                             >
-                                <img src={logo} alt={`Partner ${index}`} className={styles.partnerImg} />
+                                {name}
                             </motion.div>
                         ))}
                     </div>
@@ -365,8 +362,8 @@ const HomePage = () => {
             <section className={styles.testimonialsSection}>
                 <div className={styles.container}>
                     <motion.div className={styles.sectionHeader} {...fadeInUp}>
-                        <div className={styles.sectionBadge}>TESTIMONIALS</div>
-                        <h2 className={styles.sectionTitle}>Trusted by Founders</h2>
+                        <div className={styles.sectionBadge}>CLIENT TESTIMONIALS</div>
+                        <h2 className={styles.sectionTitle}>What Founders Say About Working With Us</h2>
                     </motion.div>
 
                     <div className={styles.testimonialGrid}>
@@ -391,7 +388,44 @@ const HomePage = () => {
                 </div>
             </section>
 
-            
+            {/* OUR FLEX */}
+            <section className={styles.flexSection}>
+                <div className={styles.container}>
+                    <motion.div className={styles.sectionHeader} {...fadeInUp}>
+                        <div className={styles.sectionBadge}>OUR FLEX</div>
+                        <h2 className={styles.sectionTitle}>101% Hands-On.</h2>
+                        <p className={styles.flexIntro}>
+                            We built TotalScope to bring product development, community growth and marketing under one roof, giving clients the freedom to focus on building while we handle execution from launch to post-launch.
+                        </p>
+                    </motion.div>
+
+                    <div className={styles.flexGrid}>
+                        {flexBlocks.map((block, index) => (
+                            <motion.div
+                                key={block.title}
+                                className={styles.flexCard}
+                                {...fadeInUp}
+                                transition={{ delay: index * 0.1 }}
+                            >
+                                <h3 className={styles.flexTitle}>{block.title}</h3>
+                                <ul className={styles.flexList}>
+                                    {block.items.map((item, i) => (
+                                        <li key={i}>
+                                            <BsCheckCircleFill className={styles.flexBullet} />
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                {block.note && <p className={styles.flexNote}>{block.note}</p>}
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <motion.p className={styles.powNote} {...fadeInUp}>
+                        <strong>POW:</strong> Proof of work available on request.
+                    </motion.p>
+                </div>
+            </section>
 
             {/* CONTACT */}
             <section id="contact" className={styles.contactSection}>
@@ -412,13 +446,16 @@ const HomePage = () => {
                         </div>
                         
                         <div className={styles.contactAction}>
-                            <motion.button 
+                            <motion.a
+                                href="https://t.me/lexioneth56"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className={styles.contactBtn}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 Message Us Now
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </div>

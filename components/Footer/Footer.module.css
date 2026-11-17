@@ -27,7 +27,7 @@
 
 .footerGrid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 4rem;
   width: 100%;
   z-index: 2;
@@ -36,6 +36,8 @@
 .brandColumn {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 1.5rem;
 }
 
@@ -53,7 +55,8 @@
   color: #888;
   font-size: 0.95rem;
   line-height: 1.6;
-  max-width: 300px;
+  max-width: 340px;
+  margin: 0 auto;
 }
 
 .columnTitle {
@@ -88,6 +91,7 @@
 
 .socials {
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
 }
@@ -116,8 +120,11 @@
 
 .bottomRow {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 0.75rem;
+  text-align: center;
   padding-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   z-index: 2;
@@ -152,7 +159,7 @@
   }
 
   .footerGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 3rem;
   }
 }

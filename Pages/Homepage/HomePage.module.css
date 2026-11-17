@@ -564,3 +564,216 @@
 .contactBtn:hover {
     background: #f4f4f5;
 }
+a.contactBtn {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* =========================================
+   SERVICES CHART
+   ========================================= */
+.serviceChart {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid rgba(144, 0, 173, 0.3);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.serviceRow {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 2.5rem;
+}
+
+.serviceRow + .serviceRow {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.serviceCategory {
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    color: #F4F4F5;
+}
+
+.pillGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.servicePill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #E4E4E7;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+}
+
+.servicePill:hover {
+    border-color: rgba(192, 38, 211, 0.6);
+    background: rgba(144, 0, 173, 0.12);
+    color: #ffffff;
+}
+
+.servicePillWide {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+    .serviceRow {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.25rem;
+        gap: 1.25rem;
+    }
+
+    .serviceCategory {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .pillGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   KEY CLIENTS (NAMES GRID)
+   ========================================= */
+.clientGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.clientCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #E4E4E7;
+    transition: all 0.3s ease;
+}
+
+.clientCell:hover {
+    background: rgba(144, 0, 173, 0.08);
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .clientGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================
+   OUR FLEX
+   ========================================= */
+.flexSection {
+    padding: 6rem 0;
+    background: radial-gradient(circle at bottom left, rgba(144, 0, 173, 0.06), transparent 50%);
+}
+
+.flexIntro {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #A1A1AA;
+    max-width: 780px;
+    margin-top: 1.5rem;
+}
+
+.flexGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .flexGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.flexCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.flexTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #F4F4F5;
+}
+
+.flexList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.flexList li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    color: #D4D4D8;
+    line-height: 1.6;
+}
+
+.flexList strong {
+    color: #ffffff;
+}
+
+.flexBullet {
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+    color: #C026D3;
+}
+
+.flexNote {
+    margin-top: auto;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #8B8B94;
+}
+
+.powNote {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1.1rem;
+    color: #D4D4D8;
+}
+
+.powNote strong {
+    color: #C026D3;
+}

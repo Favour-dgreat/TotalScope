@@ -62,7 +62,7 @@ const postData = {
 
 export default function BlogPost() {
     const params = useParams();
-    const slug = params.slug as string;
+    const slug = params?.slug as string;
     const post = postData[slug as keyof typeof postData];
 
     if (!post) {
