@@ -570,32 +570,189 @@ a.contactBtn {
 }
 
 /* =========================================
+   SHARED POLISH
+   ========================================= */
+.sectionBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid rgba(192, 38, 211, 0.35);
+    border-radius: 99px;
+    background: rgba(144, 0, 173, 0.1);
+    color: #E9D5FF;
+}
+
+.sectionBadge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #C026D3;
+    box-shadow: 0 0 10px #C026D3;
+}
+
+.sectionLead {
+    margin-top: 1.25rem;
+    max-width: 620px;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #A1A1AA;
+}
+
+/* Cursor-following glow, used by cards with onMouseMove={trackSpotlight} */
+.achievementItem,
+.serviceRow,
+.clientCell,
+.testimonialCard,
+.flexCard,
+.contactCard {
+    --mx: 50%;
+    --my: 50%;
+    position: relative;
+    isolation: isolate;
+}
+
+.achievementItem::after,
+.serviceRow::after,
+.clientCell::after,
+.testimonialCard::after,
+.flexCard::after,
+.contactCard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mx) var(--my), rgba(192, 38, 211, 0.14), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.achievementItem:hover::after,
+.serviceRow:hover::after,
+.clientCell:hover::after,
+.testimonialCard:hover::after,
+.flexCard:hover::after,
+.contactCard:hover::after {
+    opacity: 1;
+}
+
+/* =========================================
+   ACHIEVEMENTS (cards)
+   ========================================= */
+.achievementGrid {
+    gap: 1.5rem;
+}
+
+.achievementItem {
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    overflow: hidden;
+}
+
+.achievementItem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C026D3, transparent);
+}
+
+.achievementItem:hover {
+    border-color: rgba(192, 38, 211, 0.35);
+    background: linear-gradient(180deg, rgba(144, 0, 173, 0.08), rgba(255, 255, 255, 0.01));
+    transform: translateY(-4px);
+}
+
+.achievementValue {
+    font-size: clamp(3rem, 6vw, 4.25rem);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #ffffff 20%, #E879F9 60%, #818CF8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.achievementLabel {
+    color: #C084FC;
+}
+
+/* =========================================
    SERVICES CHART
    ========================================= */
-.serviceChart {
-    max-width: 1000px;
+.serviceChartFrame {
+    position: relative;
+    max-width: 1040px;
     margin: 0 auto;
-    border: 1px solid rgba(144, 0, 173, 0.3);
+    padding: 1px;
+    border-radius: 29px;
+    background: linear-gradient(135deg, rgba(192, 38, 211, 0.7), rgba(255, 255, 255, 0.08) 35%, rgba(255, 255, 255, 0.08) 65%, rgba(129, 140, 248, 0.7));
+    box-shadow: 0 30px 80px -30px rgba(144, 0, 173, 0.45);
+}
+
+.serviceChartFrame::before {
+    content: "";
+    position: absolute;
+    inset: -60px;
+    background: radial-gradient(closest-side, rgba(144, 0, 173, 0.18), transparent);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.serviceChart {
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
+    background: #0B0710;
     overflow: hidden;
 }
 
 .serviceRow {
     display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 2rem;
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
     align-items: center;
-    padding: 2.5rem;
+    padding: 2.75rem;
 }
 
 .serviceRow + .serviceRow {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.serviceCategoryWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.serviceIndex {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: #C084FC;
+}
+
+.serviceCategoryIcon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 1.3rem;
+    color: #fff;
+    background: linear-gradient(135deg, #9000AD, #6D28D9);
+    box-shadow: 0 8px 24px -6px rgba(144, 0, 173, 0.6);
 }
 
 .serviceCategory {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -614,41 +771,54 @@ a.contactBtn {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0.7rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 99px;
     font-size: 0.95rem;
     font-weight: 600;
     color: #E4E4E7;
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+    cursor: default;
+    transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .servicePill:hover {
-    border-color: rgba(192, 38, 211, 0.6);
-    background: rgba(144, 0, 173, 0.12);
+    border-color: rgba(232, 121, 249, 0.7);
+    background: linear-gradient(135deg, rgba(144, 0, 173, 0.35), rgba(109, 40, 217, 0.25));
     color: #ffffff;
+    box-shadow: 0 0 24px -4px rgba(192, 38, 211, 0.55);
+    transform: translateY(-2px);
 }
 
 .servicePillWide {
     grid-column: 1 / -1;
+    border-style: dashed;
+    border-color: rgba(192, 38, 211, 0.45);
+    color: #F0ABFC;
 }
 
 @media (max-width: 800px) {
     .serviceRow {
         grid-template-columns: 1fr;
         padding: 2rem 1.25rem;
-        gap: 1.25rem;
+        gap: 1.5rem;
     }
 
-    .serviceCategory {
+    .serviceCategoryWrap {
+        align-items: center;
         text-align: center;
     }
 }
 
 @media (max-width: 480px) {
     .pillGrid {
-        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .servicePill {
+        padding: 0.65rem 0.5rem;
+        font-size: 0.8rem;
+        line-height: 1.25;
     }
 }
 
@@ -658,28 +828,40 @@ a.contactBtn {
 .clientGrid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
     max-width: 1100px;
     margin: 0 auto;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(192, 38, 211, 0.5), rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.08) 60%, rgba(129, 140, 248, 0.5));
 }
 
 .clientCell {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2.5rem 1rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #E4E4E7;
-    transition: all 0.3s ease;
+    padding: 2.75rem 1rem;
+    background: #08050C;
+    transition: background 0.3s ease;
+}
+
+.clientName {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #A1A1AA;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .clientCell:hover {
-    background: rgba(144, 0, 173, 0.08);
+    background: #100916;
+}
+
+.clientCell:hover .clientName {
     color: #ffffff;
+    transform: scale(1.06);
+    text-shadow: 0 0 24px rgba(192, 38, 211, 0.7);
 }
 
 @media (max-width: 900px) {
@@ -689,11 +871,49 @@ a.contactBtn {
 }
 
 /* =========================================
+   TESTIMONIALS (polish)
+   ========================================= */
+.testimonialCard {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    padding: 2.25rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.testimonialCard:hover {
+    border-color: rgba(192, 38, 211, 0.35);
+    transform: translateY(-4px);
+}
+
+.quoteIcon {
+    font-size: 1.75rem;
+    color: #C026D3;
+    opacity: 0.6;
+}
+
+.authorAvatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #9000AD, #818CF8);
+    box-shadow: 0 0 0 3px rgba(144, 0, 173, 0.2);
+}
+
+/* =========================================
    OUR FLEX
    ========================================= */
 .flexSection {
     padding: 6rem 0;
-    background: radial-gradient(circle at bottom left, rgba(144, 0, 173, 0.06), transparent 50%);
+    background: radial-gradient(circle at bottom left, rgba(144, 0, 173, 0.08), transparent 50%),
+                radial-gradient(circle at top right, rgba(129, 140, 248, 0.06), transparent 45%);
 }
 
 .flexIntro {
@@ -707,7 +927,7 @@ a.contactBtn {
 .flexGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.75rem;
 }
 
 @media (max-width: 900px) {
@@ -717,13 +937,51 @@ a.contactBtn {
 }
 
 .flexCard {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 24px;
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.flexCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #9000AD, #E879F9, #818CF8);
+    opacity: 0.7;
+}
+
+.flexCard:hover {
+    border-color: rgba(192, 38, 211, 0.35);
+    transform: translateY(-4px);
+}
+
+.flexHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.flexIcon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 1.25rem;
+    color: #fff;
+    background: linear-gradient(135deg, #9000AD, #6D28D9);
+    box-shadow: 0 8px 24px -6px rgba(144, 0, 173, 0.6);
 }
 
 .flexTitle {
@@ -759,21 +1017,103 @@ a.contactBtn {
     color: #C026D3;
 }
 
+.ticker {
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.1rem 0.55rem;
+    border-radius: 6px;
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #F0ABFC;
+    background: rgba(144, 0, 173, 0.18);
+    border: 1px solid rgba(192, 38, 211, 0.35);
+}
+
 .flexNote {
     margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
     font-style: italic;
     font-size: 0.95rem;
     line-height: 1.6;
     color: #8B8B94;
 }
 
+.powWrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5rem;
+}
+
 .powNote {
-    text-align: center;
-    margin-top: 3rem;
-    font-size: 1.1rem;
-    color: #D4D4D8;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.6rem;
+    border-radius: 99px;
+    border: 1px solid rgba(192, 38, 211, 0.4);
+    background: rgba(144, 0, 173, 0.12);
+    color: #E4E4E7;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .powNote strong {
-    color: #C026D3;
+    color: #F0ABFC;
+}
+
+.powNote:hover {
+    background: rgba(144, 0, 173, 0.25);
+    box-shadow: 0 0 30px -6px rgba(192, 38, 211, 0.6);
+    transform: translateY(-2px);
+}
+
+.powDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22C55E;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* =========================================
+   CONTACT (polish)
+   ========================================= */
+.contactCard {
+    overflow: hidden;
+}
+
+.contactOrb {
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192, 38, 211, 0.35), transparent 65%);
+    filter: blur(30px);
+    animation: drift 12s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(-80px, 60px) scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contactOrb,
+    .powDot {
+        animation: none;
+    }
 }

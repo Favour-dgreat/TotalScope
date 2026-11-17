@@ -17,7 +17,9 @@ import {
     BsTwitterX,
     BsTelegram,
     BsCheckCircleFill,
-    BsLightningChargeFill
+    BsLightningChargeFill,
+    BsLaptop,
+    BsFire
 } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import styles from "./HomePage.module.css";
@@ -45,6 +47,16 @@ const CountingNumber = ({ value, prefix = "", suffix = "" }: { value: number, pr
     return <motion.span ref={ref}>{displayValue}</motion.span>;
 };
 
+// Sets --mx/--my on the card so CSS can draw a glow that follows the cursor
+const trackSpotlight = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+};
+
+const initials = (name: string) =>
+    name.split(" ").map((p) => p[0]).join("").replace(".", "").slice(0, 2).toUpperCase();
+
 const HomePage = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -57,9 +69,10 @@ const HomePage = () => {
     }, []);
 
     // Services Data
-    const serviceCategories: { title: string; items: string[]; wide?: string }[] = [
+    const serviceCategories: { title: string; icon: React.ReactNode; items: string[]; wide?: string }[] = [
         {
             title: "Technology & Product Development",
+            icon: <BsCodeSlash />,
             items: [
                 "Developers", "Designers",
                 "Website Development", "Application Development",
@@ -69,6 +82,7 @@ const HomePage = () => {
         },
         {
             title: "Community Services",
+            icon: <BsPeopleFill />,
             items: [
                 "Community Managers", "Moderators",
                 "X Mainstreamers", "Raiders",
@@ -78,6 +92,7 @@ const HomePage = () => {
         },
         {
             title: "Creative & Marketing",
+            icon: <BsMegaphoneFill />,
             items: [
                 "Project Artwork", "Branding",
                 "Memesites", "AI-Generated Content",
@@ -128,9 +143,10 @@ const HomePage = () => {
     ];
 
     // Our Flex
-    const flexBlocks: { title: string; items: React.ReactNode[]; note: string }[] = [
+    const flexBlocks: { title: string; icon: React.ReactNode; items: React.ReactNode[]; note: string }[] = [
         {
             title: "Selected Builds",
+            icon: <BsLaptop />,
             items: [
                 <><strong>Cortex AI GPU Rent Bot</strong> — Telegram GPU rental interface and supporting website.</>,
                 <><strong>Launchpad Platforms</strong> — Token launch infrastructure and project participation workflows.</>,
@@ -141,6 +157,7 @@ const HomePage = () => {
         },
         {
             title: "Technical Expertise",
+            icon: <BsCpu />,
             items: [
                 "Full-stack web and application development.",
                 "Blockchain and Web3 product development.",
@@ -154,17 +171,19 @@ const HomePage = () => {
         },
         {
             title: "Meme Marketing & Campaign Flex",
+            icon: <BsFire />,
             items: [
-                <><strong>$ADILLO</strong> — Market cap moved from $600K to $8M during the campaign, driven by our X Mainstreamers.</>,
-                <><strong>$MOKSHA</strong> — Campaign associated with a reported 500% market-cap increase within two hours.</>,
-                <><strong>$PEPEWICK</strong> — Meme content distribution and community campaign execution.</>,
-                <><strong>$FROGT</strong> — Coordinated meme marketing and social engagement.</>,
-                <><strong>$WOJAKX</strong> — Community-led meme campaign execution.</>
+                <><span className={styles.ticker}>$ADILLO</span> Market cap moved from $600K to $8M during the campaign, driven by our X Mainstreamers.</>,
+                <><span className={styles.ticker}>$MOKSHA</span> Campaign associated with a reported 500% market-cap increase within two hours.</>,
+                <><span className={styles.ticker}>$PEPEWICK</span> Meme content distribution and community campaign execution.</>,
+                <><span className={styles.ticker}>$FROGT</span> Coordinated meme marketing and social engagement.</>,
+                <><span className={styles.ticker}>$WOJAKX</span> Community-led meme campaign execution.</>
             ],
             note: "These represent only a selection of the meme campaigns and marketing executions we've delivered, with many more across different communities and ecosystems."
         },
         {
             title: "Community Services",
+            icon: <BsPeopleFill />,
             items: [
                 "Built and coordinated teams of raiders, shillers, native chatters, moderators and community managers.",
                 <>Scaled and managed <strong>80+ crypto communities</strong>.</>,
@@ -289,19 +308,27 @@ const HomePage = () => {
                 <div className={styles.container}>
                     <motion.div className={styles.achievementContent} {...fadeInUp}>
                         <div className={styles.sectionBadge}>ACHIEVEMENTS</div>
-                        <h2 className={styles.sectionTitle}>Proud of What We’ve Built.</h2>
+                        <h2 className={styles.sectionTitle}>Proud of What <span className={styles.purpleGradientText}>We’ve Built.</span></h2>
                         <p className={styles.achievementSubtitle}>
                             TotalScope powers end-to-end digital growth for Web3 brands and tech products ..cutting execution time while delivering sharp, high-conversion experiences that move the needle.
                         </p>
                         
                         <div className={styles.achievementGrid}>
                             {achievements.map((a, index) => (
-                                <div key={index} className={styles.achievementItem}>
+                                <motion.div
+                                    key={index}
+                                    className={styles.achievementItem}
+                                    onMouseMove={trackSpotlight}
+                                    initial={{ opacity: 0, y: 24 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: index * 0.12 }}
+                                >
                                     <h3 className={styles.achievementValue}>
                                         <CountingNumber value={a.value} prefix={a.prefix} suffix={a.suffix} />
                                     </h3>
                                     <p className={styles.achievementLabel}>{a.label}</p>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>
@@ -314,23 +341,36 @@ const HomePage = () => {
                 <div className={styles.container}>
                     <motion.div className={styles.sectionHeader} {...fadeInUp}>
                         <div className={styles.sectionBadge}>SERVICES</div>
-                        <h2 className={styles.sectionTitle}>What We Do</h2>
+                        <h2 className={styles.sectionTitle}>What We <span className={styles.purpleGradientText}>Do</span></h2>
+                        <p className={styles.sectionLead}>Three disciplines, one team — pick a single service or plug us in end to end.</p>
                     </motion.div>
 
-                    <motion.div className={styles.serviceChart} {...fadeInUp}>
-                        {serviceCategories.map((cat) => (
-                            <div key={cat.title} className={styles.serviceRow}>
-                                <h3 className={styles.serviceCategory}>{cat.title}</h3>
-                                <div className={styles.pillGrid}>
-                                    {cat.items.map((item) => (
-                                        <span key={item} className={styles.servicePill}>{item}</span>
-                                    ))}
-                                    {cat.wide && (
-                                        <span className={`${styles.servicePill} ${styles.servicePillWide}`}>{cat.wide}</span>
-                                    )}
+                    <motion.div className={styles.serviceChartFrame} {...fadeInUp}>
+                        <div className={styles.serviceChart}>
+                            {serviceCategories.map((cat, catIndex) => (
+                                <div key={cat.title} className={styles.serviceRow} onMouseMove={trackSpotlight}>
+                                    <div className={styles.serviceCategoryWrap}>
+                                        <span className={styles.serviceIndex}>0{catIndex + 1}</span>
+                                        <div className={styles.serviceCategoryIcon}>{cat.icon}</div>
+                                        <h3 className={styles.serviceCategory}>{cat.title}</h3>
+                                    </div>
+                                    <div className={styles.pillGrid}>
+                                        {[...cat.items, ...(cat.wide ? [cat.wide] : [])].map((item, i) => (
+                                            <motion.span
+                                                key={item}
+                                                className={`${styles.servicePill} ${item === cat.wide ? styles.servicePillWide : ""}`}
+                                                initial={{ opacity: 0, scale: 0.9, y: 8 }}
+                                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 0.35, delay: 0.1 + i * 0.04 }}
+                                            >
+                                                {item}
+                                            </motion.span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -340,7 +380,7 @@ const HomePage = () => {
                 <div className={styles.container}>
                     <motion.div className={styles.sectionHeader} {...fadeInUp}>
                         <div className={styles.sectionBadge}>KEY CLIENTS</div>
-                        <h2 className={styles.sectionTitle}>Trusted by Founders.</h2>
+                        <h2 className={styles.sectionTitle}>Trusted by <span className={styles.purpleGradientText}>Founders.</span></h2>
                     </motion.div>
 
                     <div className={styles.clientGrid}>
@@ -348,10 +388,11 @@ const HomePage = () => {
                             <motion.div
                                 key={name}
                                 className={styles.clientCell}
+                                onMouseMove={trackSpotlight}
                                 {...fadeInUp}
                                 transition={{ delay: index * 0.05 }}
                             >
-                                {name}
+                                <span className={styles.clientName}>{name}</span>
                             </motion.div>
                         ))}
                     </div>
@@ -363,7 +404,7 @@ const HomePage = () => {
                 <div className={styles.container}>
                     <motion.div className={styles.sectionHeader} {...fadeInUp}>
                         <div className={styles.sectionBadge}>CLIENT TESTIMONIALS</div>
-                        <h2 className={styles.sectionTitle}>What Founders Say About Working With Us</h2>
+                        <h2 className={styles.sectionTitle}>What Founders Say About <span className={styles.purpleGradientText}>Working With Us</span></h2>
                     </motion.div>
 
                     <div className={styles.testimonialGrid}>
@@ -371,12 +412,14 @@ const HomePage = () => {
                             <motion.div 
                                 key={index} 
                                 className={styles.testimonialCard}
+                                onMouseMove={trackSpotlight}
                                 {...fadeInUp}
                                 transition={{ delay: index * 0.05 }}
                             >
                                 <FaQuoteLeft className={styles.quoteIcon} />
                                 <p className={styles.testimonialQuote}>{t.quote}</p>
                                 <div className={styles.testimonialAuthor}>
+                                    <div className={styles.authorAvatar}>{initials(t.name)}</div>
                                     <div>
                                         <p className={styles.authorName}>{t.name}</p>
                                         <p className={styles.authorRole}>{t.role}</p>
@@ -393,7 +436,7 @@ const HomePage = () => {
                 <div className={styles.container}>
                     <motion.div className={styles.sectionHeader} {...fadeInUp}>
                         <div className={styles.sectionBadge}>OUR FLEX</div>
-                        <h2 className={styles.sectionTitle}>101% Hands-On.</h2>
+                        <h2 className={styles.sectionTitle}><span className={styles.purpleGradientText}>101%</span> Hands-On.</h2>
                         <p className={styles.flexIntro}>
                             We built TotalScope to bring product development, community growth and marketing under one roof, giving clients the freedom to focus on building while we handle execution from launch to post-launch.
                         </p>
@@ -404,10 +447,14 @@ const HomePage = () => {
                             <motion.div
                                 key={block.title}
                                 className={styles.flexCard}
+                                onMouseMove={trackSpotlight}
                                 {...fadeInUp}
                                 transition={{ delay: index * 0.1 }}
                             >
-                                <h3 className={styles.flexTitle}>{block.title}</h3>
+                                <div className={styles.flexHeader}>
+                                    <div className={styles.flexIcon}>{block.icon}</div>
+                                    <h3 className={styles.flexTitle}>{block.title}</h3>
+                                </div>
                                 <ul className={styles.flexList}>
                                     {block.items.map((item, i) => (
                                         <li key={i}>
@@ -421,16 +468,21 @@ const HomePage = () => {
                         ))}
                     </div>
 
-                    <motion.p className={styles.powNote} {...fadeInUp}>
-                        <strong>POW:</strong> Proof of work available on request.
-                    </motion.p>
+                    <motion.div className={styles.powWrap} {...fadeInUp}>
+                        <a href="https://t.me/lexioneth56" target="_blank" rel="noopener noreferrer" className={styles.powNote}>
+                            <span className={styles.powDot}></span>
+                            <strong>POW:</strong> Proof of work available on request
+                            <BsArrowUpRightCircle />
+                        </a>
+                    </motion.div>
                 </div>
             </section>
 
             {/* CONTACT */}
             <section id="contact" className={styles.contactSection}>
                 <div className={styles.container}>
-                    <motion.div className={styles.contactCard} {...fadeInUp}>
+                    <motion.div className={styles.contactCard} onMouseMove={trackSpotlight} {...fadeInUp}>
+                        <div className={styles.contactOrb}></div>
                         <div className={styles.contactContent}>
                             <h2 className={styles.contactTitle}>Ready to Scale?</h2>
                             <p className={styles.contactSubtitle}>Let's handle your project with Precision.</p>
